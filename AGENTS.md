@@ -781,3 +781,34 @@ B. a simpler technique that looks almost as good
 prefer B unless the complex technique provides a meaningful portfolio benefit.
 
 The goal is to finish a polished experience, not build the most technically complex version possible.
+
+## Project documentation workflow
+
+This project maintains shared documentation so Codex, Claude Code,
+and future agents can understand the current repository state without
+depending on previous chat history.
+
+Before starting any task, read:
+
+1. `AGENTS.md`
+2. `docs/PROJECT_STATUS.md`
+3. relevant entries in `docs/DECISIONS.md`
+
+Consult `docs/DEVELOPMENT_LOG.md` when historical context is needed.
+
+After completing a meaningful development task:
+
+1. update `docs/PROJECT_STATUS.md` so it reflects the current state;
+2. append a concise entry to `docs/DEVELOPMENT_LOG.md`;
+3. update `docs/DECISIONS.md` only if an important architectural or
+   design decision was made;
+4. do not modify previous development log entries unless correcting
+   factual errors;
+5. mention the main files changed and validation performed;
+6. keep documentation concise and factual.
+
+Documentation updates are part of the task and should be completed
+before considering the task finished.
+
+Do not use README.md as internal agent memory.
+README.md is the public-facing project documentation.
