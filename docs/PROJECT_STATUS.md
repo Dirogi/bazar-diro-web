@@ -4,7 +4,7 @@ Last updated: 2026-10-18
 
 ## Current phase
 
-Initial domain model and product catalog.
+Initial application architecture and product catalog.
 
 ## Completed work
 
@@ -14,6 +14,7 @@ Initial domain model and product catalog.
 - Initial source, asset, and documentation directory structure created.
 - Strongly typed product domain model created for wands, grimoires, and potions.
 - Local catalog data added for the initial 18 products, with placeholder asset paths.
+- Global shop state is available through a typed React Context provider and hook.
 
 ## Work in progress
 
@@ -22,12 +23,12 @@ Initial domain model and product catalog.
 ## Next tasks
 
 - Implement the exterior landing experience.
-- Define the initial interactive application architecture and global shop state.
+- Implement the first interactive room using the global shop state.
 
 ## Current application state
 
-- The default Next.js starter application remains unchanged.
-- Product types and local product data are available; no Bazar Diro components, global state, assets, or visual implementation exist yet.
+- The default Next.js starter page remains unchanged.
+- Product types and local product data are available, and `ShopProvider` wraps the App Router content in the root layout. No Bazar Diro visual implementation or assets exist yet.
 
 ## Known issues
 

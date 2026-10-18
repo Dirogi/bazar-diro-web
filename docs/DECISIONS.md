@@ -41,3 +41,9 @@
 - Status: Accepted
 - Decision: `README.md` is public-facing documentation and must not be used as internal agent memory.
 - Reason: Project state and agent context belong in the shared files under `docs/`.
+
+## D-008 - Global shop state
+
+- Status: Accepted
+- Decision: Use a typed React Context provider and `useShop` hook for the initial global interactive state.
+- Reason: The experience has one client-side state tree and currently needs no external state dependency or reducer complexity.
