@@ -1,10 +1,10 @@
 # Project status
 
-Last updated: 2026-10-17
+Last updated: 2026-10-18
 
 ## Current phase
 
-Project foundation and shared documentation.
+Initial domain model and product catalog.
 
 ## Completed work
 
@@ -12,6 +12,8 @@ Project foundation and shared documentation.
 - Git repository initialized.
 - Bazar Diro agent guidance configured in `AGENTS.md`.
 - Initial source, asset, and documentation directory structure created.
+- Strongly typed product domain model created for wands, grimoires, and potions.
+- Local catalog data added for the initial 18 products, with placeholder asset paths.
 
 ## Work in progress
 
@@ -19,14 +21,13 @@ Project foundation and shared documentation.
 
 ## Next tasks
 
-- Define the initial Bazar Diro application architecture.
 - Implement the exterior landing experience.
-- Establish product types and local product data.
+- Define the initial interactive application architecture and global shop state.
 
 ## Current application state
 
 - The default Next.js starter application remains unchanged.
-- No Bazar Diro components, product data, global state, assets, or visual implementation exist yet.
+- Product types and local product data are available; no Bazar Diro components, global state, assets, or visual implementation exist yet.
 
 ## Known issues
 

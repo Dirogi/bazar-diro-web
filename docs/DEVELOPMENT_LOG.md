@@ -1,5 +1,12 @@
 # Development log
 
+## 2026-10-18 — Product domain model and catalog
+
+- Added reusable TypeScript product types, including a shared base type, category-specific extensions, and the rarity union.
+- Added typed local catalogs for six wands, six grimoires, and six potions with stable IDs and placeholder image paths.
+- Files changed: `src/types/product.ts`, `src/data/wands.ts`, `src/data/grimoires.ts`, `src/data/potions.ts`, and `docs/PROJECT_STATUS.md`.
+- Validation: `npm run lint` and `npx tsc --noEmit`.
+
 ## 2026-10-17 — Initial project foundation
 
 - Set up the Next.js project with TypeScript, Tailwind CSS, and the App Router.
