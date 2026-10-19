@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-10-19 - Final WebP asset integration
+
+- Updated all 18 catalog image paths to their final WebP files and removed `.gitkeep` files from populated scene, overlay, and product-asset directories.
+- Confirmed the exterior scene, three room scenes, three product-detail backgrounds, and wand glass overlay are present; the asset set is ready for visual implementation.
+- Recorded that `canto-de-espejo.webp` has a 1122x1402 portrait canvas requiring alignment review in the future Wands room.
+- Files changed: `src/data/wands.ts`, `src/data/grimoires.ts`, `src/data/potions.ts`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: all catalog image paths and required scene/detail/overlay files exist; `npm run lint`, `npx tsc --noEmit`, and `git diff --check`.
+
 ## 2026-10-18 — Product domain model and catalog
 
 - Added reusable TypeScript product types, including a shared base type, category-specific extensions, and the rarity union.
