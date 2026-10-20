@@ -1,5 +1,12 @@
 # Development log
 
+## 2026-10-20 - Reusable UI assets documented
+
+- Verified the five reusable UI assets in `public/ui/` and documented their intended roles and readiness for integration.
+- Recorded that decorative UI is image-based while dynamic text, arrows, and counts must be rendered separately with HTML/CSS.
+- Files changed: `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified all five asset files; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
 ## 2026-10-19 - Exterior panel text containment refinement
 
 - Narrowed and repositioned the panel text areas for strict containment: left `21.1% / 43% / 13.9%` and right `79.9% / 42.2% / 14.7%`.
