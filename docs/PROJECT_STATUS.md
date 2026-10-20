@@ -17,6 +17,7 @@ Initial application architecture and product catalog.
 - Global shop state is available through a typed React Context provider and hook.
 - Final visual assets are available: the exterior scene, three room scenes, three product-detail backgrounds, the wand glass overlay, and all 18 product images.
 - Exterior landing, animated shop entry, and the initial Wands-room shell are implemented using the existing global shop state.
+- A reusable persistent room interface displays the room title, available navigation controls, and cart count using the UI assets.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
@@ -31,13 +32,14 @@ Initial application architecture and product catalog.
 ## Next tasks
 
 - Implement the six interactive wand products in the Wands room.
-- Add the remaining room navigation and interior interface.
+- Add directional room transitions and the remaining interior interactions.
 
 ## Current application state
 
-- The root page renders the exterior until `hasEnteredShop` is set, then renders the Wands-room shell.
+- The root page renders the exterior until `hasEnteredShop` is set, then renders the current room.
 - `ShopExterior` uses the exterior asset as an immersive, cover-scaled background. Its panel text uses explicit block lines and constrained percentage widths to remain within the artwork's burgundy panels, while the keyboard-accessible invisible door hotspot and `Entrar` cartouche sit over the central door.
-- `ShopExperience` provides a minimal Wands-room background and title only; it contains no product, navigation, cart, or detail-overlay implementation.
+- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The cart control toggles cart state and displays its count, but the cart panel is not implemented. Products and detail overlays are not yet rendered.
+- Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels.
 - The final asset set is complete enough to begin visual implementation. `canto-de-espejo.webp` uses a 1122x1402 portrait canvas, unlike the wider wand canvases, so its alignment needs review when composing the Wands room.
 
 ## Known issues

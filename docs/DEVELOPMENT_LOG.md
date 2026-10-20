@@ -1,5 +1,23 @@
 # Development log
 
+## 2026-10-20 - Navigation arrow alignment
+
+- Raised both navigation arrows by another 3px using their shared offset in `src/app/globals.css`; updated `docs/PROJECT_STATUS.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-20 - Persistent interface alignment refinement
+
+- Increased navigation and cart control widths by 12%, raised the navigation arrows by 3px, and moved room subtitles from 28% to 30% of the title frame height.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-20 - Persistent room interface
+
+- Added reusable image-framed room title, navigation, and cart controls with HTML text and icons, connected to existing shop state.
+- Mapped all three rooms to their titles and backgrounds; room changes are immediate and the cart panel remains unimplemented.
+- Files changed: `src/components/ui/RoomTitle.tsx`, `src/components/ui/NavControl.tsx`, `src/components/ui/CartControl.tsx`, `src/components/shop/ShopInterface.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified referenced assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
 ## 2026-10-20 - Reusable UI assets documented
 
 - Verified the five reusable UI assets in `public/ui/` and documented their intended roles and readiness for integration.
