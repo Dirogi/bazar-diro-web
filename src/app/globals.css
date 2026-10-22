@@ -150,6 +150,41 @@ button { font: inherit; }
   pointer-events: none;
 }
 
+.wand-room {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, calc(100dvh * 1672 / 941));
+  aspect-ratio: 1672 / 941;
+  transform: translate(-50%, -50%);
+}
+
+.wand-room__product {
+  position: absolute;
+  z-index: 0;
+  aspect-ratio: 4 / 1;
+  padding: 0;
+  border: 0;
+  background: transparent center / 100% auto no-repeat;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.wand-room__product:hover {
+  filter: brightness(1.12) drop-shadow(0 0 5px rgba(235, 190, 105, 0.45));
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.wand-room__product:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wand-room__product { transition: none; }
+}
+
 .shop-interface {
   position: absolute;
   inset: 0;

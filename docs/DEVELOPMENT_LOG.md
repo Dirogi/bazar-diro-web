@@ -1,5 +1,29 @@
 # Development log
 
+## 2026-10-21 - Wands room alignment
+
+- Integrated the improved Wands room background: central support bars were removed from the artwork, and the brass nameplates were enlarged and cleaned. Visually reviewed and refined the six wand positions against the remaining side supports, including the portrait-canvas Canto de Espejo.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`; the updated `public/scenes/wands-room.webp` was supplied beforehand.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-20 - Refine wand support alignment
+
+- Raised the wand placements slightly so they sit visually on the supports instead of covering them.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-20 - Remove wand glass overlay
+
+- Removed the provisional glass after visual review: it did not align precisely with the display frame and reduced visual consistency with the other rooms. The asset remains available.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-20 - Wands room products
+
+- Added six artwork-relative wand controls with hover and keyboard focus, connected to the existing product selection state. Added a provisional, switchable glass foreground for visual review.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: checked the six wand assets and glass asset; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
 ## 2026-10-20 - Navigation arrow alignment
 
 - Raised both navigation arrows by another 3px using their shared offset in `src/app/globals.css`; updated `docs/PROJECT_STATUS.md`.
@@ -87,3 +111,15 @@
 - Wrapped App Router content with the client provider while retaining the root layout as a Server Component.
 - Files changed: `src/components/shop/shop-provider.tsx`, `src/app/layout.tsx`, `docs/PROJECT_STATUS.md`, `docs/DECISIONS.md`, and `docs/DEVELOPMENT_LOG.md`.
 - Validation: `npm run lint`, `npx tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-21 - Individual wand placement refinement
+
+- Refined individual wand widths and horizontal positions around the existing layout, including the portrait-canvas Canto de Espejo; retained the existing vertical positions and interaction behavior.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Approved wand placement baseline
+
+- Recorded the improved Wands background, with central support bars removed and brass nameplates enlarged and cleaned. The six wand positions were manually fine-tuned in-browser; their current values are visually approved for this stage. The next task is adding wand names to the brass nameplates.
+- Inspected `src/components/rooms/WandRoom.tsx`, its typed product data, selection state, styles, and scene integration. Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md` without changing the room or placements.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.

@@ -2,6 +2,7 @@
 
 import { useShop, type RoomId } from "@/components/shop/shop-provider";
 import { ShopInterface } from "@/components/shop/ShopInterface";
+import { WandRoom } from "@/components/rooms/WandRoom";
 
 const ROOM_DETAILS: Record<RoomId, { subtitle: string; title: string; scene: string }> = {
   wands: { subtitle: "PRIMER SALÓN", title: "VARITAS", scene: "/scenes/wands-room.webp" },
@@ -16,6 +17,7 @@ export function ShopExperience() {
   return (
     <main className="shop-experience" aria-label={`Sala actual: ${room.title}`}>
       <div className="shop-experience__scene" style={{ backgroundImage: `url(${room.scene})` }} aria-hidden="true" />
+      {currentRoom === "wands" && <WandRoom />}
       <ShopInterface subtitle={room.subtitle} title={room.title} />
     </main>
   );
