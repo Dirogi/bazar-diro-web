@@ -19,6 +19,7 @@ Initial application architecture and product catalog.
 - Exterior landing, animated shop entry, and the initial Wands-room shell are implemented using the existing global shop state.
 - A reusable persistent room interface displays the room title, available navigation controls, and cart count using the UI assets.
 - The improved Wands room background removes the central support bars and enlarges and cleans the empty brass nameplates. The six wand positions were manually fine-tuned in-browser and their current placement values are visually approved for this stage; no glass overlay is rendered.
+- The six brass nameplates display decorative wand names dynamically from the product data, with larger, darker serif typography; the approved placement values remain unchanged.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
@@ -32,7 +33,6 @@ Initial application architecture and product catalog.
 
 ## Next tasks
 
-- Add the wand names to the brass nameplates.
 - Implement the wand product detail overlay and selection transition.
 - Add directional room transitions and the remaining interior interactions.
 

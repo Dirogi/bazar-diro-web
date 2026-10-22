@@ -181,6 +181,21 @@ button { font: inherit; }
   outline-offset: 3px;
 }
 
+.wand-room__nameplate {
+  position: absolute;
+  color: #29130d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.45rem, max(0.72vw, 1.28dvh), 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  overflow: hidden;
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wand-room__product { transition: none; }
 }

@@ -123,3 +123,14 @@
 - Recorded the improved Wands background, with central support bars removed and brass nameplates enlarged and cleaned. The six wand positions were manually fine-tuned in-browser; their current values are visually approved for this stage. The next task is adding wand names to the brass nameplates.
 - Inspected `src/components/rooms/WandRoom.tsx`, its typed product data, selection state, styles, and scene integration. Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md` without changing the room or placements.
 - Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-22 - Wand nameplate labels
+
+- Added the six wand names as decorative text on the physical brass nameplates, dynamically sourced from the typed product data. The manually approved wand placement values remain unchanged.
+- Files changed: `src/components/rooms/WandRoom.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Wand nameplate typography
+
+- Increased the shared wand label size and weight, darkened the text, and restrained tracking in `src/app/globals.css`; placements and interactions remain unchanged.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
