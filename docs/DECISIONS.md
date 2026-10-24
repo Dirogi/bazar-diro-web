@@ -47,3 +47,9 @@
 - Status: Accepted
 - Decision: Use a typed React Context provider and `useShop` hook for the initial global interactive state.
 - Reason: The experience has one client-side state tree and currently needs no external state dependency or reducer complexity.
+
+## D-009 - Fictional currency model
+
+- Status: Accepted
+- Decision: Each experience starts with 2,000 coins, and the available balance is derived from `INITIAL_COINS - cartTotal`. Products that exceed this balance are blocked before cart insertion.
+- Reason: Derived state keeps cart removal and experience reset consistent without a persistent economy or duplicated balance state.

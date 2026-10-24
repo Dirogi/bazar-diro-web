@@ -22,12 +22,16 @@ Initial application architecture and product catalog.
 - The six brass nameplates display decorative wand names dynamically from the product data, with larger, darker serif typography; the approved placement values remain unchanged.
 - Wand selection opens a reusable product overlay using `wand-details.webp`, with animated wand movement, dynamic details, and the existing cart action. Turnaround remains postponed.
 - All six wand detail-view placements were manually fine-tuned in-browser and are visually approved for this stage. Their per-product detail values remain centralized in `WandDetail.tsx`, independent from the approved Wands-room placements in `WandRoom.tsx`; no room placement was changed during detail refinement.
+- A fictional currency system starts each experience with 2,000 coins. Available coins are derived from `INITIAL_COINS - cartTotal`; unaffordable additions are blocked and show a temporary accessible notification.
+- The temporary CSS coin indicator has been replaced by the final reusable `coin-display.webp` asset, with its dynamic balance and coin symbol rendered as accessible HTML over the decorative frame.
+- The final coin-display placement was manually fine-tuned in-browser and is visually approved. Its approved `3.05vw` horizontal offset applies only to the coin display; the cart position remains independent and unchanged.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
   - `cart-control.webp`: closed cart control and merchant-style cart anchor.
   - `cart-scroll.webp`: expandable parchment panel for the open cart.
   - `primary-button.webp`: decorative frame for primary actions such as Adquirir and Finalizar compra.
+  - `coin-display.webp`: final decorative frame for the persistent available-coin balance.
 
 ## Work in progress
 
@@ -42,8 +46,8 @@ Initial application architecture and product catalog.
 
 - The root page renders the exterior until `hasEnteredShop` is set, then renders the current room.
 - `ShopExterior` uses the exterior asset as an immersive, cover-scaled background. Its panel text uses explicit block lines and constrained percentage widths to remain within the artwork's burgundy panels, while the keyboard-accessible invisible door hotspot and `Entrar` cartouche sit over the central door.
-- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles cart state and displays its count, but the cart panel is not implemented.
-- Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels.
+- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles cart state and displays its count, while a merchant-style coin plaque to its left shows the derived available balance; the cart panel is not implemented.
+- Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels. The approved coin indicator offset is `3.05vw` for scene-trim clearance; the cart position remains independent and unchanged.
 - `canto-de-espejo.webp` uses a 1122x1402 portrait canvas; its image remains centered and sized by width within the wand control, and its placement was visually reviewed with the other wands.
 - The provisional wand glass was intentionally removed after visual review because it did not align precisely with the display frame and reduced consistency with the other rooms. The asset remains in `public/overlays/`.
 

@@ -166,3 +166,42 @@
 - Confirmed that all six detail-view wand placements were manually fine-tuned in-browser and are visually approved for this stage. The per-wand detail values in `src/components/products/WandDetail.tsx` remain independent from the approved room placements in `src/components/rooms/WandRoom.tsx`; no room placement was changed.
 - Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md` only. The next development task can proceed without further wand positioning work.
 - Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+# 2026-10-24 - Fictional currency constraint
+
+- Added a 2,000-coin derived balance to the existing shop context, an affordability check before adding from wand details, and a temporary Motion notification for insufficient funds.
+- Added a merchant-style coin indicator beside the cart; cart removal and reset restore funds automatically because no balance is stored separately.
+- Files changed: `src/components/shop/shop-provider.tsx`, `src/components/shop/ShopExperience.tsx`, `src/components/shop/ShopInterface.tsx`, `src/components/products/WandDetail.tsx`, `src/components/ui/CoinBalance.tsx`, `src/components/ui/InsufficientFundsNotice.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, `docs/DECISIONS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-24 - Cart and coin horizontal alignment
+
+- Moved the persistent merchant-control group right by a centralized responsive offset (`22.4px`–`31.92px`) so the cart center aligns with the right navigation-control column; its `top` and dimensions are unchanged.
+- The coin indicator moves with that group, retaining its existing gap to the cart and avoiding the central scene trim.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-24 - Coin indicator horizontal refinement
+
+- Moved only the coin indicator right by a centralized responsive `4px`–`6px` transform, retaining its height, appearance, value, and separation from the fixed cart control.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-24 - Final coin display asset
+
+- Replaced the temporary CSS coin plaque with the reusable `public/ui/coin-display.webp` frame; the Spanish-formatted balance and existing coin symbol remain dynamic HTML with the existing accessible label.
+- Files changed: `src/components/ui/CoinBalance.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified `public/ui/coin-display.webp`; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-24 - Coin display rightward refinement
+
+- Updated only the coin display's centralized horizontal transform from `clamp(4px, 0.3vw, 6px)` to `1.25vw`; cart positioning, sizing, gap, and all behavior remain unchanged.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-24 - Approved coin display placement baseline
+
+- Confirmed the final reusable `coin-display.webp` is integrated and its dynamic Spanish-formatted amount continues to receive the derived `availableCoins` value.
+- Recorded the manually fine-tuned, visually approved `3.05vw` coin-display offset. The coin transform remains independent from the cart control, whose positioning was not changed.
+- Files changed: `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.

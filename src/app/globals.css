@@ -209,8 +209,21 @@ button { font: inherit; }
   --interface-top: 1%;
   --nav-control-width: clamp(67.2px, 6.16vw, 98.56px);
   --cart-control-width: clamp(112px, 10.08vw, 162.4px);
+  --merchant-controls-column-offset: clamp(22.4px, 1.96vw, 31.92px);
+  --merchant-controls-right: calc(var(--interface-edge) - var(--merchant-controls-column-offset));
+  --coin-balance-horizontal-offset: 3.05vw;
+  --coin-display-width: clamp(142px, 10vw, 160px);
   --nav-arrow-offset: -6px;
   --room-subtitle-top: 30%;
+}
+
+.shop-interface__merchant-controls {
+  position: absolute;
+  top: var(--interface-top);
+  right: var(--merchant-controls-right);
+  display: flex;
+  align-items: center;
+  gap: clamp(0.35rem, 0.7vw, 0.75rem);
 }
 
 .room-title {
@@ -283,8 +296,9 @@ button { font: inherit; }
 .nav-control span { display: inline-block; transform: translateY(var(--nav-arrow-offset)); }
 
 .cart-control {
-  top: var(--interface-top);
-  right: var(--interface-edge);
+  position: relative;
+  top: auto;
+  right: auto;
   width: var(--cart-control-width);
   aspect-ratio: 3 / 2;
   background-image: url("/ui/cart-control.webp");
@@ -304,6 +318,69 @@ button { font: inherit; }
 }
 
 .cart-control__content svg { width: 1.4em; height: 1.4em; }
+
+.coin-balance {
+  position: relative;
+  width: var(--coin-display-width);
+  aspect-ratio: 2275 / 736;
+  margin: 0;
+  background: url("/ui/coin-display.webp") center / contain no-repeat;
+  color: #3b1c10;
+  font-family: Georgia, "Times New Roman", serif;
+  transform: translateX(var(--coin-balance-horizontal-offset));
+}
+
+.coin-balance__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.28em;
+  font-size: clamp(0.76rem, 1.05vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.coin-balance__symbol {
+  color: #8f571f;
+  font-size: 1.15em;
+  line-height: 0.8;
+  text-shadow: 0 1px 1px rgba(255, 239, 187, 0.75);
+}
+
+.insufficient-funds-notice__region {
+  position: absolute;
+  top: clamp(5.7rem, 10.5vh, 7.8rem);
+  left: 50%;
+  z-index: 20;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.insufficient-funds-notice {
+  margin: 0;
+  padding: 0.62rem 1.1rem 0.68rem;
+  border: 1px solid rgba(218, 174, 83, 0.9);
+  background: linear-gradient(180deg, rgba(87, 28, 23, 0.98), rgba(49, 16, 13, 0.98));
+  box-shadow: inset 0 0 0 1px rgba(37, 11, 8, 0.9), 0 0 14px rgba(204, 146, 62, 0.25);
+  color: #f5dfad;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.82rem, 1.15vw, 1.05rem);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.insufficient-funds-notice::before,
+.insufficient-funds-notice::after {
+  color: #d8a955;
+  content: "✦";
+  font-size: 0.72em;
+  margin: 0 0.55em;
+}
 
 .product-overlay {
   position: absolute;

@@ -4,6 +4,7 @@ import { useShop, type RoomId } from "@/components/shop/shop-provider";
 import { ShopInterface } from "@/components/shop/ShopInterface";
 import { WandRoom } from "@/components/rooms/WandRoom";
 import { ProductOverlay } from "@/components/products/ProductOverlay";
+import { InsufficientFundsNotice } from "@/components/ui/InsufficientFundsNotice";
 import { useState } from "react";
 
 const ROOM_DETAILS: Record<RoomId, { subtitle: string; title: string; scene: string }> = {
@@ -13,7 +14,7 @@ const ROOM_DETAILS: Record<RoomId, { subtitle: string; title: string; scene: str
 };
 
 export function ShopExperience() {
-  const { currentRoom, selectedProduct } = useShop();
+  const { currentRoom, selectedProduct, isInsufficientFundsNoticeVisible, clearInsufficientFundsNotice } = useShop();
   const [source, setSource] = useState<{ element: HTMLButtonElement; rect: DOMRect } | null>(null);
   const room = ROOM_DETAILS[currentRoom];
 
@@ -25,6 +26,7 @@ export function ShopExperience() {
         <ShopInterface subtitle={room.subtitle} title={room.title} />
       </div>
       {selectedProduct?.type === "wand" && source && <ProductOverlay product={selectedProduct} source={source} />}
+      <InsufficientFundsNotice visible={isInsufficientFundsNoticeVisible} onDismiss={clearInsufficientFundsNotice} />
     </main>
   );
 }

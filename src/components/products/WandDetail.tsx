@@ -22,7 +22,7 @@ const DEFAULT_WAND_DETAIL_PLACEMENT = { left: 31.2, top: 49, width: 39, rotation
 export function WandDetail({ product, sourceRect, closing, duration, reducedMotion, onFinished, children }: DetailChildren & {
   product: WandProduct; sourceRect: DOMRect; closing: boolean; duration: number; reducedMotion: boolean; onFinished: () => void;
 }) {
-  const { addToCart, isInCart } = useShop();
+  const { addToCart, canAfford, isInCart, showInsufficientFundsNotice } = useShop();
   const acquired = isInCart(product.id);
   const stageWidth = Math.min(window.innerWidth, window.innerHeight * 1672 / 941);
   const stageHeight = stageWidth * 941 / 1672;
@@ -50,7 +50,10 @@ export function WandDetail({ product, sourceRect, closing, duration, reducedMoti
           <div className="wand-detail__value wand-detail__value--affinity"><dt className="sr-only">Afinidad mágica</dt><dd>{product.affinity}</dd></div>
           <div className="wand-detail__value wand-detail__value--price"><dt className="sr-only">Precio</dt><dd>{product.price} monedas</dd></div>
         </dl>
-        <button className="wand-detail__acquire" type="button" disabled={acquired || closing} onClick={() => addToCart(product)}>{acquired ? "Adquirido" : "Adquirir"}</button>
+        <button className="wand-detail__acquire" type="button" disabled={acquired || closing} onClick={() => {
+          if (canAfford(product)) addToCart(product);
+          else showInsufficientFundsNotice();
+        }}>{acquired ? "Adquirido" : "Adquirir"}</button>
         {children}
       </motion.div>
     </>

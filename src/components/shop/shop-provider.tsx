@@ -11,6 +11,7 @@ import {
 import type { Product } from "@/types/product";
 
 export const ROOMS = ["wands", "grimoires", "potions"] as const;
+export const INITIAL_COINS = 2000;
 
 export type RoomId = (typeof ROOMS)[number];
 
@@ -24,6 +25,9 @@ interface ShopContextValue {
   isPurchaseComplete: boolean;
   cartItemCount: number;
   cartTotal: number;
+  initialCoins: number;
+  availableCoins: number;
+  isInsufficientFundsNoticeVisible: boolean;
   enterShop: () => void;
   returnToExterior: () => void;
   setCurrentRoom: (room: RoomId) => void;
@@ -34,6 +38,9 @@ interface ShopContextValue {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   isInCart: (productId: string) => boolean;
+  canAfford: (product: Product) => boolean;
+  showInsufficientFundsNotice: () => void;
+  clearInsufficientFundsNotice: () => void;
   toggleCart: () => void;
   openCart: () => void;
   closeCart: () => void;
@@ -53,6 +60,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isPurchaseComplete, setIsPurchaseComplete] = useState(false);
+  const [isInsufficientFundsNoticeVisible, setIsInsufficientFundsNoticeVisible] = useState(false);
 
   const enterShop = useCallback(() => {
     setHasEnteredShop(true);
@@ -61,6 +69,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
     setIsCartOpen(false);
     setIsCheckoutOpen(false);
     setIsPurchaseComplete(false);
+    setIsInsufficientFundsNoticeVisible(false);
   }, []);
 
   const returnToExterior = useCallback(() => {
@@ -68,6 +77,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
     setSelectedProduct(null);
     setIsCartOpen(false);
     setIsCheckoutOpen(false);
+    setIsInsufficientFundsNoticeVisible(false);
   }, []);
 
   const goToNextRoom = useCallback(() => {
@@ -79,9 +89,12 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const addToCart = useCallback((product: Product) => {
-    setCart((items) =>
-      items.some((item) => item.id === product.id) ? items : [...items, product],
-    );
+    setCart((items) => {
+      if (items.some((item) => item.id === product.id)) return items;
+
+      const total = items.reduce((sum, item) => sum + item.price, 0);
+      return product.price <= INITIAL_COINS - total ? [...items, product] : items;
+    });
   }, []);
 
   const removeFromCart = useCallback((productId: string) => {
@@ -96,11 +109,13 @@ export function ShopProvider({ children }: { children: ReactNode }) {
     setIsCartOpen(false);
     setIsCheckoutOpen(false);
     setIsPurchaseComplete(false);
+    setIsInsufficientFundsNoticeVisible(false);
   }, []);
 
   const value = useMemo<ShopContextValue>(() => {
     const cartItemCount = cart.length;
     const cartTotal = cart.reduce((total, product) => total + product.price, 0);
+    const availableCoins = Math.max(0, INITIAL_COINS - cartTotal);
 
     return {
       hasEnteredShop,
@@ -112,6 +127,9 @@ export function ShopProvider({ children }: { children: ReactNode }) {
       isPurchaseComplete,
       cartItemCount,
       cartTotal,
+      initialCoins: INITIAL_COINS,
+      availableCoins,
+      isInsufficientFundsNoticeVisible,
       enterShop,
       returnToExterior,
       setCurrentRoom,
@@ -122,6 +140,9 @@ export function ShopProvider({ children }: { children: ReactNode }) {
       addToCart,
       removeFromCart,
       isInCart: (productId) => cart.some((product) => product.id === productId),
+      canAfford: (product) => product.price <= availableCoins,
+      showInsufficientFundsNotice: () => setIsInsufficientFundsNoticeVisible(true),
+      clearInsufficientFundsNotice: () => setIsInsufficientFundsNoticeVisible(false),
       toggleCart: () => setIsCartOpen((isOpen) => !isOpen),
       openCart: () => setIsCartOpen(true),
       closeCart: () => setIsCartOpen(false),
@@ -149,6 +170,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
     isCartOpen,
     isCheckoutOpen,
     isPurchaseComplete,
+    isInsufficientFundsNoticeVisible,
     removeFromCart,
     resetExperience,
     returnToExterior,
