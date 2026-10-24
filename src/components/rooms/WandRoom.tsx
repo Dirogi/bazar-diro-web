@@ -22,8 +22,8 @@ const NAMEPLATE_PLACEMENTS: Record<string, { left: string; top: string; width: s
   "canto-de-espejo": { left: "67.4%", top: "60.4%", width: "8%" },
 };
 
-export function WandRoom() {
-  const { selectProduct } = useShop();
+export function WandRoom({ onSelect }: { onSelect: (element: HTMLButtonElement) => void }) {
+  const { selectProduct, selectedProduct } = useShop();
 
   return (
     <div className="wand-room">
@@ -32,9 +32,9 @@ export function WandRoom() {
           key={wand.id}
           type="button"
           className="wand-room__product"
-          style={{ ...WAND_PLACEMENTS[wand.id], backgroundImage: `url(${wand.image})` }}
+          style={{ ...WAND_PLACEMENTS[wand.id], backgroundImage: `url(${wand.image})`, visibility: selectedProduct?.id === wand.id ? "hidden" : undefined }}
           aria-label={`Ver detalles de ${wand.name}`}
-          onClick={() => selectProduct(wand)}
+          onClick={(event) => { onSelect(event.currentTarget); selectProduct(wand); }}
         />
       ))}
       {wands.map((wand) => (

@@ -1,6 +1,6 @@
 # Project status
 
-Last updated: 2026-10-22
+Last updated: 2026-10-24
 
 ## Current phase
 
@@ -20,6 +20,8 @@ Initial application architecture and product catalog.
 - A reusable persistent room interface displays the room title, available navigation controls, and cart count using the UI assets.
 - The improved Wands room background removes the central support bars and enlarges and cleans the empty brass nameplates. The six wand positions were manually fine-tuned in-browser and their current placement values are visually approved for this stage; no glass overlay is rendered.
 - The six brass nameplates display decorative wand names dynamically from the product data, with larger, darker serif typography; the approved placement values remain unchanged.
+- Wand selection opens a reusable product overlay using `wand-details.webp`, with animated wand movement, dynamic details, and the existing cart action. Turnaround remains postponed.
+- All six wand detail-view placements were manually fine-tuned in-browser and are visually approved for this stage. Their per-product detail values remain centralized in `WandDetail.tsx`, independent from the approved Wands-room placements in `WandRoom.tsx`; no room placement was changed during detail refinement.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
@@ -33,14 +35,14 @@ Initial application architecture and product catalog.
 
 ## Next tasks
 
-- Implement the wand product detail overlay and selection transition.
 - Add directional room transitions and the remaining interior interactions.
+- Wand detail positioning requires no further work before the next development task.
 
 ## Current application state
 
 - The root page renders the exterior until `hasEnteredShop` is set, then renders the current room.
 - `ShopExterior` uses the exterior asset as an immersive, cover-scaled background. Its panel text uses explicit block lines and constrained percentage widths to remain within the artwork's burgundy panels, while the keyboard-accessible invisible door hotspot and `Entrar` cartouche sit over the central door.
-- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and sets `selectedProduct` on selection; detail overlays are not yet rendered. The cart control toggles cart state and displays its count, but the cart panel is not implemented.
+- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles cart state and displays its count, but the cart panel is not implemented.
 - Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels.
 - `canto-de-espejo.webp` uses a 1122x1402 portrait canvas; its image remains centered and sized by width within the wand control, and its placement was visually reviewed with the other wands.
 - The provisional wand glass was intentionally removed after visual review because it did not align precisely with the display frame and reduced consistency with the other rooms. The asset remains in `public/overlays/`.

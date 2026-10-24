@@ -304,3 +304,78 @@ button { font: inherit; }
 }
 
 .cart-control__content svg { width: 1.4em; height: 1.4em; }
+
+.product-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.product-overlay__shade { position: absolute; inset: 0; background: rgba(12, 5, 3, 0.68); }
+.product-overlay__stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100%, calc(100dvh * 1672 / 941));
+  aspect-ratio: 1672 / 941;
+  transform: translate(-50%, -50%);
+}
+.product-overlay__art { position: absolute; inset: 0; background: url("/scenes/wand-details.webp") center / 100% 100% no-repeat; }
+.wand-detail__wand {
+  position: absolute;
+  top: 49%;
+  left: 31.2%;
+  aspect-ratio: 4 / 1;
+  margin: 0;
+  translate: -50% -50%;
+  background: center / 100% auto no-repeat;
+  pointer-events: none;
+}
+.wand-detail__content { position: absolute; inset: 0; }
+.wand-detail__value {
+  position: absolute;
+  left: 55.7%;
+  display: flex;
+  align-items: center;
+  height: 4.4%;
+  padding: 0 1%;
+  color: #32180e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.55rem, 1.1vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.wand-detail__value dd { margin: 0; }
+.wand-detail__value--name { top: 16.6%; width: 24.7%; font-size: clamp(0.7rem, 1.4vw, 1.4rem); }
+.wand-detail__value--rarity { top: 30%; width: 16%; }
+.wand-detail__value--materials { top: 42.1%; width: 24.7%; font-size: clamp(0.48rem, 0.92vw, 0.95rem); }
+.wand-detail__value--length { top: 53.6%; width: 18%; }
+.wand-detail__value--affinity { top: 65%; width: 24.7%; font-size: clamp(0.48rem, 0.92vw, 0.95rem); }
+.wand-detail__value--price { top: 76.7%; width: 18%; }
+.wand-detail__acquire {
+  position: absolute;
+  top: 83.5%;
+  left: 49.8%;
+  width: 29.5%;
+  height: 8%;
+  border: 0;
+  background: url("/ui/primary-button.webp") center / 100% 100% no-repeat;
+  color: #f4e5bd;
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  text-shadow: 0 2px 3px #250b06;
+}
+.wand-detail__acquire:disabled { cursor: default; color: #d2bd91; }
+.product-overlay__close {
+  position: absolute;
+  top: 4.5%;
+  left: 81.7%;
+  width: 3.5%;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.wand-detail__acquire:focus-visible, .product-overlay__close:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }

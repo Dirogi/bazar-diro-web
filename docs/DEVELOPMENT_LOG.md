@@ -134,3 +134,35 @@
 
 - Increased the shared wand label size and weight, darkened the text, and restrained tracking in `src/app/globals.css`; placements and interactions remain unchanged.
 - Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Wand detail interaction
+
+- Added a reusable product overlay and wand-specific detail presentation using `wand-details.webp`, animated selection and return, dynamic product fields, and the existing duplicate-safe cart action. Turnaround remains postponed.
+- Files changed: `src/components/products/ProductOverlay.tsx`, `src/components/products/WandDetail.tsx`, `src/components/rooms/WandRoom.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified the detail, button, and six wand assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-22 - Independent wand detail placement
+
+- Added per-wand detail positioning in `src/components/products/WandDetail.tsx`, independent of room placement, while retaining the existing animation and cart behavior.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Varita Sombría detail scale
+
+- Reduced only Varita Sombría's detail scale to 0.74 in `src/components/products/WandDetail.tsx`, keeping its center and room placement unchanged.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Varita Sombría final detail size
+
+- Reduced Varita Sombría's detail scale from 0.74 to 0.666 in `src/components/products/WandDetail.tsx`, retaining its position and rotation.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-22 - Varita Sombría detail position
+
+- Adjusted only Varita Sombría's detail position in `src/components/products/WandDetail.tsx`, keeping its size and rotation unchanged.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`. Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+
+## 2026-10-24 - Approved wand detail placement baseline
+
+- Confirmed that all six detail-view wand placements were manually fine-tuned in-browser and are visually approved for this stage. The per-wand detail values in `src/components/products/WandDetail.tsx` remain independent from the approved room placements in `src/components/rooms/WandRoom.tsx`; no room placement was changed.
+- Updated `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md` only. The next development task can proceed without further wand positioning work.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
