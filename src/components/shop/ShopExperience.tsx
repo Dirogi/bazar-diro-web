@@ -6,6 +6,7 @@ import { WandRoom } from "@/components/rooms/WandRoom";
 import { ProductOverlay } from "@/components/products/ProductOverlay";
 import { InsufficientFundsNotice } from "@/components/ui/InsufficientFundsNotice";
 import { ScrollCart } from "@/components/cart/ScrollCart";
+import { PurchaseFlow } from "@/components/shop/PurchaseFlow";
 import { useState } from "react";
 
 const ROOM_DETAILS: Record<RoomId, { subtitle: string; title: string; scene: string }> = {
@@ -27,6 +28,7 @@ export function ShopExperience() {
         <ShopInterface subtitle={room.subtitle} title={room.title} />
       </div>
       <ScrollCart />
+      <PurchaseFlow />
       {selectedProduct?.type === "wand" && source && <ProductOverlay product={selectedProduct} source={source} />}
       <InsufficientFundsNotice visible={isInsufficientFundsNoticeVisible} onDismiss={clearInsufficientFundsNotice} />
     </main>

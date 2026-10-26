@@ -1,5 +1,12 @@
 # Development log
 
+## 2026-10-26 - Fictional purchase flow
+
+- Added `PurchaseFlow`: an accessible confirmation-only checkout dialog showing the existing cart items and derived total, plus a final atmospheric completion overlay.
+- Confirming calls the existing `confirmPurchase()` action without changing cart or currency totals; `Volver al inicio` calls `resetExperience()`, which clears the cart and restores the exterior and 2,000-coin starting state. No payment or persistence was added.
+- Files changed: `src/components/shop/PurchaseFlow.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
 ## 2026-10-26 - Expanded cart parchment
 
 - Added `ScrollCart`, a reusable Motion-animated parchment panel that uses `cart-scroll.webp` with dynamic HTML/CSS content, a bounded scrolling item list, empty state, removal controls, and the existing derived cart total.

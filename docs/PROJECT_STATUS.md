@@ -25,7 +25,8 @@ Initial application architecture and product catalog.
 - A fictional currency system starts each experience with 2,000 coins. Available coins are derived from `INITIAL_COINS - cartTotal`; unaffordable additions are blocked and show a temporary accessible notification.
 - The temporary CSS coin indicator has been replaced by the final reusable `coin-display.webp` asset, with its dynamic balance and coin symbol rendered as accessible HTML over the decorative frame.
 - The final coin-display placement was manually fine-tuned in-browser and is visually approved. Its approved `3.05vw` horizontal offset applies only to the coin display; the cart position remains independent and unchanged.
-- The expandable cart parchment is implemented with `cart-scroll.webp` as its decorative shell. It renders cart state dynamically, supports item removal, shows the derived total, and connects its primary action to the existing checkout-opening state.
+- The expandable cart parchment is implemented with `cart-scroll.webp` as its decorative shell. It renders cart state dynamically, supports item removal, shows the derived total, and opens the fictional purchase confirmation flow.
+- The fictional purchase flow is complete: its checkout is confirmation-only, with no payment provider, persistence, or backend. Confirmation opens an atmospheric completion overlay, and `resetExperience()` returns to the exterior while clearing the cart and restoring the 2,000-coin derived balance.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
@@ -40,7 +41,6 @@ Initial application architecture and product catalog.
 
 ## Next tasks
 
-- Add the checkout and final purchase-confirmation overlays opened from the cart.
 - Add directional room transitions and the remaining interior interactions.
 - Wand detail positioning requires no further work before the next development task.
 
@@ -48,7 +48,7 @@ Initial application architecture and product catalog.
 
 - The root page renders the exterior until `hasEnteredShop` is set, then renders the current room.
 - `ShopExterior` uses the exterior asset as an immersive, cover-scaled background. Its panel text uses explicit block lines and constrained percentage widths to remain within the artwork's burgundy panels, while the keyboard-accessible invisible door hotspot and `Entrar` cartouche sit over the central door.
-- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles the open parchment below it and displays its count, while a merchant-style coin plaque to its left shows the derived available balance. `ScrollCart` uses the existing context for items, removal, and derived total; its current fade/vertical-expansion animation is intentionally simple and may be enhanced into a fuller unrolling effect later. Checkout and final confirmation UI remain unimplemented.
+- `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles the open parchment below it and displays its count, while a merchant-style coin plaque to its left shows the derived available balance. `ScrollCart` uses the existing context for items, removal, and derived total; its current fade/vertical-expansion animation is intentionally simple and may be enhanced into a fuller unrolling effect later. `PurchaseFlow` consumes the same cart and total for checkout confirmation, then uses the existing state actions for completion and reset without any second currency deduction.
 - Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels. The approved coin indicator offset is `3.05vw` for scene-trim clearance; the cart position remains independent and unchanged.
 - `canto-de-espejo.webp` uses a 1122x1402 portrait canvas; its image remains centered and sized by width within the wand control, and its placement was visually reviewed with the other wands.
 - The provisional wand glass was intentionally removed after visual review because it did not align precisely with the display frame and reduced consistency with the other rooms. The asset remains in `public/overlays/`.
