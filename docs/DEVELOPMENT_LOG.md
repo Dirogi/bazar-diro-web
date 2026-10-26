@@ -1,5 +1,12 @@
 # Development log
 
+## 2026-10-26 - Expanded cart parchment
+
+- Added `ScrollCart`, a reusable Motion-animated parchment panel that uses `cart-scroll.webp` with dynamic HTML/CSS content, a bounded scrolling item list, empty state, removal controls, and the existing derived cart total.
+- Connected the semantic `Finalizar compra` action to the existing `openCheckout()` state action; checkout and purchase-confirmation UI remain the next purchase-system step. Updated the persistent cart control with expanded-state accessibility semantics.
+- Files changed: `src/components/cart/ScrollCart.tsx`, `src/components/shop/ShopExperience.tsx`, `src/components/ui/CartControl.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified `public/ui/cart-scroll.webp` and `public/ui/primary-button.webp`; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
 ## 2026-10-21 - Wands room alignment
 
 - Integrated the improved Wands room background: central support bars were removed from the artwork, and the brass nameplates were enlarged and cleaned. Visually reviewed and refined the six wand positions against the remaining side supports, including the portrait-canvas Canto de Espejo.

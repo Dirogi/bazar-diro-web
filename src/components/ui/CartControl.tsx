@@ -1,7 +1,7 @@
 export function CartControl({ count, isOpen, onClick }: { count: number; isOpen: boolean; onClick: () => void }) {
   return (
-    <button type="button" className="cart-control" onClick={onClick}
-      aria-label={`${isOpen ? "Cerrar carrito" : "Abrir carrito"}, ${count} artículos`} aria-pressed={isOpen}>
+    <button id="cart-control" type="button" className="cart-control" onClick={onClick}
+      aria-label={`${isOpen ? "Cerrar carrito" : "Abrir carrito"}, ${count} artículos`} aria-controls="scroll-cart" aria-expanded={isOpen}>
       <span className="cart-control__content" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M3 4h2l2.2 10.2h10.9L20 7H6" />
