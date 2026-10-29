@@ -1,6 +1,6 @@
 # Project status
 
-Last updated: 2026-10-26
+Last updated: 2026-10-29
 
 ## Current phase
 
@@ -27,6 +27,11 @@ Initial application architecture and product catalog.
 - The final coin-display placement was manually fine-tuned in-browser and is visually approved. Its approved `3.05vw` horizontal offset applies only to the coin display; the cart position remains independent and unchanged.
 - The expandable cart parchment is implemented with `cart-scroll.webp` as its decorative shell. It renders cart state dynamically, supports item removal, shows the derived total, and opens the fictional purchase confirmation flow.
 - The fictional purchase flow is complete: its checkout is confirmation-only, with no payment provider, persistence, or backend. Confirmation opens an atmospheric completion overlay, and `resetExperience()` returns to the exterior while clearing the cart and restoring the 2,000-coin derived balance.
+- The improved Grimoires room background is integrated with its larger central cabinet and cleaner, enlarged brass plaques. The six front-facing products and their dynamic labels are centrally configured against the artwork.
+- Grimoire selection now uses the reusable product-detail flow with `grimoire-details.webp`, an animated front-facing book, dynamic typed fields, and the existing cart/currency action. `GRIMOIRE_DETAIL_PLACEMENTS` in `GrimoireDetail.tsx` keeps individual detail positioning independent from room placements; spine, back, and turnaround inspection remain postponed.
+- Grimoire selection captures its clicked button before setting `selectedProduct`, matching Wands and ensuring the detail overlay receives its transition origin. After either detail overlay finishes closing, its source is cleared; focus restoration safely skips source buttons that have been unmounted.
+- The six dynamic right-panel values in the Grimoire detail view are optically centered inside their illustrated fields. Long binding-material and magical-affinity values use field-specific multiline padding, line height, and type scale; the book placement, animation, and shared overlay behavior are unchanged.
+- The shared product-detail stage uses cover-style sizing so its 1672x941 artwork fills the viewport horizontally without subpixel side seams. Wand and Grimoire animation-origin geometry mirrors that stage sizing; product placements and visual-field coordinates are unchanged.
 - The reusable UI asset set is available in `public/ui/` and ready for integration:
   - `room-title.webp`: room title frame with a small subtitle zone and a larger main title zone.
   - `nav-control.webp`: side navigation frame; its directional arrow is rendered separately.
@@ -49,6 +54,7 @@ Initial application architecture and product catalog.
 - The root page renders the exterior until `hasEnteredShop` is set, then renders the current room.
 - `ShopExterior` uses the exterior asset as an immersive, cover-scaled background. Its panel text uses explicit block lines and constrained percentage widths to remain within the artwork's burgundy panels, while the keyboard-accessible invisible door hotspot and `Entrar` cartouche sit over the central door.
 - `ShopExperience` maps the current room to its background and title; the persistent interface navigates instantly between rooms using global state. The Wands room uses centralized, individually refined artwork-relative product placements and opens a wand detail overlay through `selectedProduct`. The cart control toggles the open parchment below it and displays its count, while a merchant-style coin plaque to its left shows the derived available balance. `ScrollCart` uses the existing context for items, removal, and derived total; its current fade/vertical-expansion animation is intentionally simple and may be enhanced into a fuller unrolling effect later. `PurchaseFlow` consumes the same cart and total for checkout confirmation, then uses the existing state actions for completion and reset without any second currency deduction.
+- `GrimoireRoom` maps the six typed Grimoires products into the display niches through percentage-based configuration. Selecting a keyboard-accessible front-facing book records its source element, then opens `ProductOverlay` and `GrimoireDetail`; the measured shared-element-style movement returns to that source on close. The detail uses separate `GRIMOIRE_DETAIL_PLACEMENTS`, keeps covers front-facing, and renders typed data over `grimoire-details.webp`. Turnaround remains intentionally unimplemented.
 - Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels. The approved coin indicator offset is `3.05vw` for scene-trim clearance; the cart position remains independent and unchanged.
 - `canto-de-espejo.webp` uses a 1122x1402 portrait canvas; its image remains centered and sized by width within the wand control, and its placement was visually reviewed with the other wands.
 - The provisional wand glass was intentionally removed after visual review because it did not align precisely with the display frame and reduced consistency with the other rooms. The asset remains in `public/overlays/`.

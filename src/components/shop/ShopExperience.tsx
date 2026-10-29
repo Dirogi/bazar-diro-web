@@ -3,6 +3,7 @@
 import { useShop, type RoomId } from "@/components/shop/shop-provider";
 import { ShopInterface } from "@/components/shop/ShopInterface";
 import { WandRoom } from "@/components/rooms/WandRoom";
+import { GrimoireRoom } from "@/components/rooms/GrimoireRoom";
 import { ProductOverlay } from "@/components/products/ProductOverlay";
 import { InsufficientFundsNotice } from "@/components/ui/InsufficientFundsNotice";
 import { ScrollCart } from "@/components/cart/ScrollCart";
@@ -25,11 +26,12 @@ export function ShopExperience() {
       <div className="shop-experience__scene" style={{ backgroundImage: `url(${room.scene})` }} aria-hidden="true" />
       <div inert={!!selectedProduct}>
         {currentRoom === "wands" && <WandRoom onSelect={(element) => setSource({ element, rect: element.getBoundingClientRect() })} />}
+        {currentRoom === "grimoires" && <GrimoireRoom onSelect={(element) => setSource({ element, rect: element.getBoundingClientRect() })} />}
         <ShopInterface subtitle={room.subtitle} title={room.title} />
       </div>
       <ScrollCart />
       <PurchaseFlow />
-      {selectedProduct?.type === "wand" && source && <ProductOverlay product={selectedProduct} source={source} />}
+      {(selectedProduct?.type === "wand" || selectedProduct?.type === "grimoire") && source && <ProductOverlay product={selectedProduct} source={source} onClosed={() => setSource(null)} />}
       <InsufficientFundsNotice visible={isInsufficientFundsNoticeVisible} onDismiss={clearInsufficientFundsNotice} />
     </main>
   );

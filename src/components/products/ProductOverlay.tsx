@@ -4,9 +4,13 @@ import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useShop } from "@/components/shop/shop-provider";
 import { WandDetail } from "@/components/products/WandDetail";
-import type { WandProduct } from "@/types/product";
+import { GrimoireDetail } from "@/components/products/GrimoireDetail";
+import type { GrimoireProduct, WandProduct } from "@/types/product";
 
-export function ProductOverlay({ product, source }: { product: WandProduct; source: { element: HTMLButtonElement; rect: DOMRect } }) {
+type DetailProduct = WandProduct | GrimoireProduct;
+type ProductSource = { element: HTMLButtonElement; rect: DOMRect };
+
+export function ProductOverlay({ product, source, onClosed }: { product: DetailProduct; source: ProductSource; onClosed: () => void }) {
   const { closeProductDetail } = useShop();
   const [closing, setClosing] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -21,7 +25,10 @@ export function ProductOverlay({ product, source }: { product: WandProduct; sour
   function finishClosing() {
     if (!closing) return;
     closeProductDetail();
-    requestAnimationFrame(() => source.element.focus());
+    onClosed();
+    requestAnimationFrame(() => {
+      if (source.element.isConnected) source.element.focus();
+    });
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
@@ -42,12 +49,18 @@ export function ProductOverlay({ product, source }: { product: WandProduct; sour
 
   return (
     <div className="product-overlay" ref={dialogRef} role="dialog" aria-modal="true" aria-label={`Detalles de ${product.name}`} onKeyDown={handleKeyDown}>
-      <motion.div className="product-overlay__shade" initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration }} />
+      <motion.div className={`product-overlay__shade product-overlay__shade--${product.type}`} initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration }} />
       <div className="product-overlay__stage">
-        <motion.div className="product-overlay__art" initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration }} />
-        <WandDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
-          <button ref={closeRef} className="product-overlay__close" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
-        </WandDetail>
+        <motion.div className={`product-overlay__art product-overlay__art--${product.type}`} initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration }} />
+        {product.type === "wand" ? (
+          <WandDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
+            <button ref={closeRef} className="product-overlay__close" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
+          </WandDetail>
+        ) : (
+          <GrimoireDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
+            <button ref={closeRef} className="product-overlay__close product-overlay__close--grimoire" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
+          </GrimoireDetail>
+        )}
       </div>
     </div>
   );

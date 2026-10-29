@@ -9,8 +9,8 @@ export const potions: readonly PotionProduct[] = [
     price: 460,
     image: "/products/potions/parlamento-de-luciernagas.webp",
     categoryLabel: "Pociones",
-    ingredients: "néctar de flor nocturna, polvo de alfabeto arcano, miel de luciérnaga, esencia de eco verbal",
-    effect: "durante 1 hora permite comprender y hablar cualquier idioma, dialecto o variación lingüística escuchada",
+    ingredients: "Néctar de flor nocturna, polvo de alfabeto arcano, miel de luciérnaga, esencia de eco verbal",
+    effect: "Durante 1 hora permite comprender y hablar cualquier idioma, dialecto o variación lingüística escuchada",
   },
   {
     id: "manto-del-solsticio",
@@ -20,7 +20,7 @@ export const potions: readonly PotionProduct[] = [
     price: 390,
     image: "/products/potions/manto-del-solsticio.webp",
     categoryLabel: "Pociones",
-    ingredients: "savia de abeto de invierno, ceniza de verano sellada, escarcha dorada, pétalos de rosa solar",
+    ingredients: "Savia de abeto de invierno, ceniza de verano sellada, escarcha dorada, pétalos de rosa solar",
     effect: "protege del calor y del frío extremos durante 2 horas",
   },
   {
@@ -31,8 +31,8 @@ export const potions: readonly PotionProduct[] = [
     price: 510,
     image: "/products/potions/paso-sin-orilla.webp",
     categoryLabel: "Pociones",
-    ingredients: "niebla de puente antiguo, esencia de junco flotante, polvo de piedra pómez lunar, lágrima de garza blanca",
-    effect: "durante 20 minutos permite caminar sobre superficies inestables como agua en calma, barro, nieve profunda, ceniza o arena blanda sin hundirse",
+    ingredients: "Niebla de puente antiguo, esencia de junco flotante, polvo de piedra pómez lunar, lágrima de garza blanca",
+    effect: "Durante 20 minutos permite caminar sobre superficies inestables como agua en calma, barro, nieve profunda, ceniza o arena blanda sin hundirse",
   },
   {
     id: "candela-del-cerrajero-dormido",
@@ -42,8 +42,8 @@ export const potions: readonly PotionProduct[] = [
     price: 480,
     image: "/products/potions/candela-del-cerrajero-dormido.webp",
     categoryLabel: "Pociones",
-    ingredients: "aceite de bisagra encantada, virutas de llave antigua, humo de vela ritual, polvo de lacre vencido",
-    effect: "durante 30 minutos facilita abrir cerraduras, pestillos, sellos, nudos y mecanismos simples",
+    ingredients: "Aceite de bisagra encantada, virutas de llave antigua, humo de vela ritual, polvo de lacre vencido",
+    effect: "Durante 30 minutos facilita abrir cerraduras, pestillos, sellos, nudos y mecanismos simples",
   },
   {
     id: "tinta-del-testigo-quieto",
@@ -53,8 +53,8 @@ export const potions: readonly PotionProduct[] = [
     price: 380,
     image: "/products/potions/tinta-del-testigo-quieto.webp",
     categoryLabel: "Pociones",
-    ingredients: "hollín de lámpara ritual, tinta de calamar lunar, polvo de pergamino revelado, lágrima de obsidiana pulida",
-    effect: "durante 3 horas permite leer escritura oculta, borrada, desvaída, parcialmente quemada o cubierta por ilusiones simples",
+    ingredients: "Hollín de lámpara ritual, tinta de calamar lunar, polvo de pergamino revelado, lágrima de obsidiana pulida",
+    effect: "Durante 3 horas permite leer escritura oculta, borrada, desvaída, parcialmente quemada o cubierta por ilusiones simples",
   },
   {
     id: "nudo-del-regreso",
@@ -64,7 +64,7 @@ export const potions: readonly PotionProduct[] = [
     price: 670,
     image: "/products/potions/nudo-del-regreso.webp",
     categoryLabel: "Pociones",
-    ingredients: "hilo de retorno encantado, polvo de imán arcano, savia de raíz enlazada, bruma de campana de viaje",
-    effect: "durante 1 hora vincula pequeños objetos inertes para poder hacerlos volver a la mano mentalmente si no están demasiado lejos ni separados por una barrera importante",
+    ingredients: "Hilo de retorno encantado, polvo de imán arcano, savia de raíz enlazada, bruma de campana de viaje",
+    effect: "Durante 1 hora vincula pequeños objetos inertes para poder hacerlos volver a la mano mentalmente si no están demasiado lejos ni separados por una barrera importante",
   },
 ];

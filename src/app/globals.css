@@ -196,8 +196,96 @@ button { font: inherit; }
   white-space: nowrap;
 }
 
+.grimoire-room {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, calc(100dvh * 1672 / 941));
+  aspect-ratio: 1672 / 941;
+  transform: translate(-50%, -50%);
+}
+
+.grimoire-room__product {
+  position: absolute;
+  z-index: 0;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  border: 0;
+  background: transparent center / contain no-repeat;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.grimoire-room__product:hover,
+.grimoire-room__product[aria-pressed="true"] {
+  filter: brightness(1.1) drop-shadow(0 0 7px rgba(235, 190, 105, 0.42));
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.grimoire-room__product:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.grimoire-room__nameplate {
+  position: absolute;
+  z-index: 1;
+
+  display: grid;
+  place-items: center;
+
+  box-sizing: border-box;
+  padding: 0 0.35%;
+
+  color: #32170e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+}
+
+.grimoire-room__nameplate-text {
+  display: -webkit-box;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  white-space: normal;
+  overflow: hidden;
+
+  text-align: center;
+  line-height: 1.05;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.grimoire-room__nameplate--long {
+  font-size: clamp(0.46rem, max(0.68vw, 1.06dvh), 0.88rem);
+}
+
+.grimoire-room__nameplate > * {
+  width: 100%;
+  min-width: 0;
+
+  white-space: normal !important;
+  text-align: center;
+  line-height: inherit;
+}
+
+
+
 @media (prefers-reduced-motion: reduce) {
-  .wand-room__product { transition: none; }
+  .wand-room__product, .grimoire-room__product { transition: none; }
 }
 
 .shop-interface {
@@ -469,15 +557,18 @@ button { font: inherit; }
 }
 
 .product-overlay__shade { position: absolute; inset: 0; background: rgba(12, 5, 3, 0.68); }
+.product-overlay__shade--grimoire { backdrop-filter: blur(2px); }
 .product-overlay__stage {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(100%, calc(100dvh * 1672 / 941));
+  width: max(100%, calc(100dvh * 1672 / 941));
   aspect-ratio: 1672 / 941;
   transform: translate(-50%, -50%);
 }
-.product-overlay__art { position: absolute; inset: 0; background: url("/scenes/wand-details.webp") center / 100% 100% no-repeat; }
+.product-overlay__art { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; background-size: 100% 100%; }
+.product-overlay__art--wand { background-image: url("/scenes/wand-details.webp"); }
+.product-overlay__art--grimoire { background-image: url("/scenes/grimoire-details.webp"); }
 .wand-detail__wand {
   position: absolute;
   top: 49%;
@@ -535,4 +626,121 @@ button { font: inherit; }
   background: transparent;
   cursor: pointer;
 }
+.product-overlay__close--grimoire { top: 4.5%; left: 84.2%; width: 3.4%; }
 .wand-detail__acquire:focus-visible, .product-overlay__close:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }
+
+.grimoire-detail__book {
+  position: absolute;
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  translate: -50% -50%;
+  background: center / contain no-repeat;
+  pointer-events: none;
+}
+.grimoire-detail__content { position: absolute; inset: 0; }
+.grimoire-detail__value {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  color: #32180e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+
+  overflow: hidden;
+  text-align: center;
+}
+
+.grimoire-detail__value dd {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+/* NOMBRE */
+.grimoire-detail__value--name {
+  left: 62.4%;
+  top: 16.3%;
+  width: 18.9%;
+  height: 4.9%;
+
+  padding: 0.15% 0.5%;
+
+  font-size: clamp(0.72rem, 1.15vw, 1.25rem);
+  line-height: 1.02;
+}
+
+/* RAREZA */
+.grimoire-detail__value--rarity {
+  left: 62.8%;
+  top: 29.7%;
+  width: 10.7%;
+  height: 3.6%;
+
+  padding: 0.1% 0.4%;
+
+  font-size: clamp(0.55rem, 0.9vw, 0.95rem);
+  line-height: 1;
+}
+
+/* ENCUADERNACIÓN Y MATERIALES */
+.grimoire-detail__value--materials {
+  left: 61.5%;
+  top: 40.7%;
+  width: 21.3%;
+  height: 4.15%;
+  padding: 0.1% 0.75%;
+  font-size: clamp(0.56rem, 0.66vw, 0.72rem);
+  line-height: 1.05;
+}
+
+/* EXTENSIÓN */
+.grimoire-detail__value--pages {
+  left: 64.2%;
+  top: 52.45%;
+  width: 12.3%;
+  height: 3.4%;
+  padding: 0.1% 0.4%;
+  font-size: clamp(0.55rem, 0.9vw, 0.95rem);
+  line-height: 1;
+}
+
+/* AFINIDAD MÁGICA */
+.grimoire-detail__value--affinity {
+  left: 61.5%;
+  top: 63.65%;
+  width: 21.3%;
+  height: 4.25%;
+  padding: 0.1% 0.75%;
+  font-size: clamp(0.54rem, 0.63vw, 0.69rem);
+  line-height: 1.05;
+}
+
+/* PRECIO */
+.grimoire-detail__value--price {
+  left: 64.5%;
+  top: 74.7%;
+  width: 10.9%;
+  height: 3.4%;
+  padding: 0.1% 0.4%;
+  font-size: clamp(0.58rem, 0.92vw, 1rem);
+  line-height: 1;
+}
+.grimoire-detail__acquire {
+  position: absolute;
+  top: 80.6%;
+  left: 54.2%;
+  width: 29.6%;
+  height: 7.7%;
+  border: 0;
+  background: url("/ui/primary-button.webp") center / 100% 100% no-repeat;
+  color: #f4e5bd;
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  text-shadow: 0 2px 3px #250b06;
+}
+.grimoire-detail__acquire:disabled { cursor: default; color: #d2bd91; }
+.grimoire-detail__acquire:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }

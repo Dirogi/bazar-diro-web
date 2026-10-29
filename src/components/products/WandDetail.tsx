@@ -24,7 +24,7 @@ export function WandDetail({ product, sourceRect, closing, duration, reducedMoti
 }) {
   const { addToCart, canAfford, isInCart, showInsufficientFundsNotice } = useShop();
   const acquired = isInCart(product.id);
-  const stageWidth = Math.min(window.innerWidth, window.innerHeight * 1672 / 941);
+  const stageWidth = Math.max(window.innerWidth, window.innerHeight * 1672 / 941);
   const stageHeight = stageWidth * 941 / 1672;
   const stageLeft = (window.innerWidth - stageWidth) / 2;
   const stageTop = (window.innerHeight - stageHeight) / 2;

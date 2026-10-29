@@ -1,5 +1,39 @@
 # Development log
 
+## 2026-10-29 - Product detail stage seam fix
+
+- Changed the shared detail stage from contain-style to cover-style sizing (`min` to `max`) so the 1672x941 detail artwork fills common 16:9 viewports without subpixel lateral seams.
+- Updated Wand and Grimoire animation-origin stage-width calculations to use the same cover geometry; artwork, product placements, field coordinates, buttons, and room layouts are unchanged.
+- Files changed: `src/app/globals.css`, `src/components/products/WandDetail.tsx`, `src/components/products/GrimoireDetail.tsx`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-27 - Grimoire detail source capture fix
+
+- Fixed the Grimoires detail freeze by making `GrimoireRoom` capture the clicked button through the existing `onSelect` contract before selecting the product. This guarantees that the product overlay receives a transition source instead of leaving the inert room visible without an overlay.
+- The shared detail overlay now clears its source after closing and only restores focus when the original button is still connected, preventing stale room elements from being reused across categories.
+- Files changed: `src/components/rooms/GrimoireRoom.tsx`, `src/components/products/ProductOverlay.tsx`, `src/components/shop/ShopExperience.tsx`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-27 - Grimoire detail field alignment
+
+- Recentered the six dynamic values in the right panel of the Grimoire detail artwork. The short fields use shared flex centering; binding materials and magical affinity receive field-specific multiline sizing, padding, and line-height for an optically balanced result.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`. The Grimoire book, overlay layout, animation, cart, currency, and Wands styles were not changed.
+- Validation: `npm.cmd run lint` and `git diff --check` passed. `npx.cmd tsc --noEmit` remains blocked by the existing `onSelect` prop mismatch between `ShopExperience` and `GrimoireRoom`.
+
+## 2026-10-26 - Grimoires room artwork recalibration
+
+- Integrated the improved `grimoires-room.webp` composition with its larger display cabinet and enlarged clean plaques. Recalibrated all six percentage-based book placements, label positions, and long-label type scale to the replacement artwork.
+- Verified the replacement `grimoire-details.webp` asset is available for the upcoming Grimoire detail-interaction phase; no detail UI was added.
+- Files changed: `src/components/rooms/GrimoireRoom.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`; updated room/detail artwork was supplied beforehand.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+## 2026-10-26 - Grimoires room products
+
+- Added `GrimoireRoom` with the six typed catalog products arranged front-facing in the second-room display niches. Product and brass-plaque positions are percentage-based and centrally configurable; names render dynamically from the catalog.
+- Added restrained hover/focus treatment and selection through the existing `selectedProduct` state. A Grimoire detail overlay, opening animation, and turnaround remain the next category-specific work.
+- Files changed: `src/components/rooms/GrimoireRoom.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified the room and six grimoire assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
 ## 2026-10-26 - Fictional purchase flow
 
 - Added `PurchaseFlow`: an accessible confirmation-only checkout dialog showing the existing cart items and derived total, plus a final atmospheric completion overlay.
@@ -219,3 +253,10 @@
 - Recorded the manually fine-tuned, visually approved `3.05vw` coin-display offset. The coin transform remains independent from the cart control, whose positioning was not changed.
 - Files changed: `docs/PROJECT_STATUS.md` and `docs/DEVELOPMENT_LOG.md`.
 - Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, and `git diff --check`.
+# 2026-10-26 - Grimoire detail interaction
+
+- Extended the reusable `ProductOverlay` to support Grimoires and added `GrimoireDetail`, reusing the existing dialog focus trap, Escape close, reduced-motion behavior, measured origin/return animation, cart action, and insufficient-funds notice.
+- Activated `grimoire-details.webp`; all six books remain front-facing in its manuscript area. Independent per-book detail configuration is exported as `GRIMOIRE_DETAIL_PLACEMENTS`, while spine/back inspection and turnaround remain postponed.
+- Updated `GrimoireRoom` and `ShopExperience` to retain the selected source element and prevent room controls from receiving interaction behind the open overlay.
+- Files changed: `src/components/products/ProductOverlay.tsx`, `src/components/products/GrimoireDetail.tsx`, `src/components/rooms/GrimoireRoom.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified the detail artwork, primary action asset, and six Grimoire assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
