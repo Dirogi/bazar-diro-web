@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bazar Diro
+
+Bazar Diro is an original, desktop-first interactive fantasy shop built as a frontend practice and portfolio project. Rather than a conventional ecommerce site, it is a game-like web experience: enter through an animated exterior, travel between magical rooms, and explore a curated collection of fictional objects.
+
+## Features
+
+- Three themed rooms: Wands, Grimoires, and Potions
+- 18 original fantasy products with typed catalog data
+- Animated shop entry, room exploration, and product-detail views
+- Parchment-style cart with a fictional 2,000-coin balance
+- Simulated checkout flow with no real transactions
+- Custom fantasy interface inspired by antique labels, brass plaques, and parchment
+- Reduced-motion support and keyboard-accessible close controls where relevant
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Motion
+
+## Architecture
+
+The experience uses local, typed product data and a small global shop-state layer to coordinate room navigation, product overlays, cart contents, fictional currency, and checkout. Reusable room and detail components are paired with independent placement configurations so each scene can be composed precisely without duplicating interaction logic.
+
+```text
+src/
+  app/
+  components/
+  data/
+  types/
+
+public/
+  scenes/
+  products/
+  ui/
+```
 
 ## Getting Started
 
-First, run the development server:
+```bash
+git clone <repository-url>
+cd bazar-diro-web
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Available scripts:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Screenshots will be added after the final deployment.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+The project is prepared for deployment on Vercel.
 
-To learn more about Next.js, take a look at the following resources:
+Live demo: coming soon
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Future Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Interactive 360° product inspection
+- Improved mobile responsiveness
+- Optional ambient audio
 
-## Deploy on Vercel
+## Disclaimer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bazar Diro is a personal practice and portfolio project. All products, currency, and purchase interactions are fictional; it is not a real commercial store.
