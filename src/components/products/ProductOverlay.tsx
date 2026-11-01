@@ -5,9 +5,10 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useShop } from "@/components/shop/shop-provider";
 import { WandDetail } from "@/components/products/WandDetail";
 import { GrimoireDetail } from "@/components/products/GrimoireDetail";
-import type { GrimoireProduct, WandProduct } from "@/types/product";
+import { PotionDetail } from "@/components/products/PotionDetail";
+import type { GrimoireProduct, PotionProduct, WandProduct } from "@/types/product";
 
-type DetailProduct = WandProduct | GrimoireProduct;
+type DetailProduct = WandProduct | GrimoireProduct | PotionProduct;
 type ProductSource = { element: HTMLButtonElement; rect: DOMRect };
 
 export function ProductOverlay({ product, source, onClosed }: { product: DetailProduct; source: ProductSource; onClosed: () => void }) {
@@ -56,10 +57,14 @@ export function ProductOverlay({ product, source, onClosed }: { product: DetailP
           <WandDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
             <button ref={closeRef} className="product-overlay__close" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
           </WandDetail>
-        ) : (
+        ) : product.type === "grimoire" ? (
           <GrimoireDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
             <button ref={closeRef} className="product-overlay__close product-overlay__close--grimoire" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
           </GrimoireDetail>
+        ) : (
+          <PotionDetail product={product} sourceRect={source.rect} closing={closing} duration={duration} reducedMotion={!!reducedMotion} onFinished={finishClosing}>
+            <button ref={closeRef} className="product-overlay__close product-overlay__close--potion" type="button" aria-label="Cerrar detalles" onClick={() => setClosing(true)} disabled={closing} />
+          </PotionDetail>
         )}
       </div>
     </div>

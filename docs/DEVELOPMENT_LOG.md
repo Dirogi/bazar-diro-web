@@ -260,3 +260,45 @@
 - Updated `GrimoireRoom` and `ShopExperience` to retain the selected source element and prevent room controls from receiving interaction behind the open overlay.
 - Files changed: `src/components/products/ProductOverlay.tsx`, `src/components/products/GrimoireDetail.tsx`, `src/components/rooms/GrimoireRoom.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
 - Validation: verified the detail artwork, primary action asset, and six Grimoire assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-10-29 - Potions room and detail interaction
+
+- Added `PotionRoom` with six final bottle assets, individually configurable artwork-relative display placements, and dynamic two-line-safe nameplates aligned to the engraved plates in `potions-room.webp`.
+- Extended the shared `ProductOverlay` route with `PotionDetail`, activating `potion-details.webp`, independent per-potion detail placement, dynamic Spanish fields, and the existing origin/return animation, cart, derived-coin, duplicate-prevention, insufficient-funds, focus, Escape, and reduced-motion behavior.
+- Files changed: `src/components/rooms/PotionRoom.tsx`, `src/components/products/PotionDetail.tsx`, `src/components/products/ProductOverlay.tsx`, `src/components/shop/ShopExperience.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: verified both Potion scene assets, the primary action asset, and all six Potion assets; `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-10-31 - Exterior entry visual-plane animation
+
+- Wrapped the exterior background, darkening shade, and both HTML panel-copy blocks in one full-screen Motion visual plane so they zoom together during entry; their original percentage-based composition is unchanged.
+- Kept the door hotspot outside the visual plane and changed the `Entrar` control to fade out independently without scaling.
+- Files changed: `src/components/landing/ShopExterior.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-11-01 - Checkout summary magical aura
+
+- Added a checkout-only, CSS-based pale-blue aura outside the purchase-summary parchment through non-interactive layered gradients in `PurchaseFlow` and `globals.css`; checkout content, dimensions, and flow remain unchanged.
+- The subtle perimeter shimmer uses 4.8s, 5.6s, and 3.9s alternating animations, while `prefers-reduced-motion` keeps the same soft glow static.
+- Files changed: `src/components/shop/PurchaseFlow.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-11-01 - Checkout aura visibility refinement
+
+- Strengthened the existing checkout-only CSS aura without changing its structure: its outer spread is now 26px, cyan corner/edge gradients and side wisps are brighter, and the slow flicker has a slightly clearer but still restrained variation.
+- The aura remains behind the unchanged parchment and stays static, while visibly present, for reduced-motion users.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-11-01 - Checkout magical flame perimeter
+
+- Added a close, masked CSS blue-white flame perimeter to the existing checkout aura architecture. The new non-interactive layer traces all four sides at a 3px thickness with irregular conic coloring, small corner wisps, and edge highlights; the former diffuse aura remains behind it.
+- All flame and aura movement stops under `prefers-reduced-motion`, preserving the complete static perimeter and atmospheric glow.
+- Files changed: `src/components/shop/PurchaseFlow.tsx`, `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.
+
+# 2026-11-01 - Checkout continuous flame refinement
+
+- Reduced the checkout aura's diffuse outer layers to a subtle supporting glow and made the close masked flame frame the primary effect. Small radial tongues now cover the top, bottom, left, and right sides, while repeating irregular edge highlights preserve a continuous 3px perimeter.
+- Existing animations remain slow, and reduced motion continues to render the full flame frame and only a static subtle glow.
+- Files changed: `src/app/globals.css`, `docs/PROJECT_STATUS.md`, and `docs/DEVELOPMENT_LOG.md`.
+- Validation: `npm.cmd run lint`, `npx.cmd tsc --noEmit`, `git diff --check`, and `npm.cmd run build`.

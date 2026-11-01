@@ -21,7 +21,7 @@ export const potions: readonly PotionProduct[] = [
     image: "/products/potions/manto-del-solsticio.webp",
     categoryLabel: "Pociones",
     ingredients: "Savia de abeto de invierno, ceniza de verano sellada, escarcha dorada, pétalos de rosa solar",
-    effect: "protege del calor y del frío extremos durante 2 horas",
+    effect: "Protege del calor y del frío extremos durante 2 horas",
   },
   {
     id: "paso-sin-orilla",

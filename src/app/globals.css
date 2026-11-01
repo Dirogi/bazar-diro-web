@@ -42,6 +42,13 @@ button { font: inherit; }
   isolation: isolate;
 }
 
+.shop-exterior__visual {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  transform-origin: center;
+}
+
 .shop-exterior__scene, .shop-experience__scene {
   position: absolute;
   inset: -2%;
@@ -282,10 +289,72 @@ button { font: inherit; }
   line-height: inherit;
 }
 
+.potion-room {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, calc(100dvh * 1672 / 941));
+  aspect-ratio: 1672 / 941;
+  transform: translate(-50%, -50%);
+}
+
+.potion-room__product {
+  position: absolute;
+  z-index: 0;
+  aspect-ratio: 2 / 3;
+  padding: 0;
+  border: 0;
+  background: transparent center / contain no-repeat;
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(var(--potion-scale, 1)) rotate(var(--potion-rotation, 0deg));
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.potion-room__product:hover,
+.potion-room__product[aria-pressed="true"] {
+  filter: brightness(1.1) drop-shadow(0 0 7px rgba(235, 190, 105, 0.42));
+  transform: translate(-50%, -50%) scale(calc(var(--potion-scale, 1) * 1.04)) rotate(var(--potion-rotation, 0deg));
+}
+
+.potion-room__product:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 3px;
+}
+
+.potion-room__nameplate {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0 0.45%;
+  color: #32170e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.44rem, max(0.64vw, 1dvh), 0.84rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  overflow: hidden;
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.potion-room__nameplate-text {
+  display: -webkit-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: normal;
+  text-align: center;
+  word-break: normal;
+}
+
 
 
 @media (prefers-reduced-motion: reduce) {
-  .wand-room__product, .grimoire-room__product { transition: none; }
+  .wand-room__product, .grimoire-room__product, .potion-room__product { transition: none; }
 }
 
 .shop-interface {
@@ -438,7 +507,7 @@ button { font: inherit; }
 .scroll-cart__remove { width: 1.45em; height: 1.45em; padding: 0; border: 0; background: transparent; color: #6e2818; cursor: pointer; font-size: clamp(0.85rem, 1.1vw, 1.05rem); line-height: 1; }
 .scroll-cart__empty { display: grid; place-items: center; margin: 0; color: #704630; font-size: clamp(0.74rem, 0.95vw, 0.92rem); font-style: italic; text-align: center; }
 .scroll-cart__total { right: 18.5%; bottom: 23.4%; left: 18.5%; margin: 0; border-top: 1px solid rgba(92, 39, 20, 0.4); padding-top: 0.4rem; font-size: clamp(0.68rem, 0.9vw, 0.88rem); text-align: center; }
-.scroll-cart__checkout { right: 18.5%; bottom: 8.5%; left: 18.5%; height: 9.4%; border: 0; background: url("/ui/primary-button.webp") center / 100% 100% no-repeat; color: #f4e5bd; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: clamp(0.67rem, 1vw, 0.95rem); font-weight: 700; text-shadow: 0 1px 3px #250b06; }
+.scroll-cart__checkout { right: 18.5%; bottom: 7.6%; left: 18.5%; height: 9.4%; border: 0; background: url("/ui/primary-button.webp") center / 100% 100% no-repeat; color: #f4e5bd; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: clamp(0.67rem, 1vw, 0.95rem); font-weight: 700; text-shadow: 0 1px 3px #250b06; }
 .scroll-cart__checkout:disabled { color: #c7ae83; cursor: not-allowed; filter: grayscale(0.35); }
 .scroll-cart__close:hover, .scroll-cart__remove:hover { color: #9b431f; }
 .scroll-cart__close:focus-visible, .scroll-cart__remove:focus-visible, .scroll-cart__checkout:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }
@@ -454,8 +523,116 @@ button { font: inherit; }
 
 .purchase-flow--complete { z-index: 30; }
 .purchase-flow__shade { position: absolute; inset: 0; background: rgba(17, 6, 4, 0.66); backdrop-filter: blur(2px); }
+.purchase-flow__checkout-frame { position: relative; width: min(100%, 34rem); }
+.purchase-flow__aura,
+.purchase-flow__aura::before,
+.purchase-flow__aura::after {
+  position: absolute;
+  inset: -26px;
+  border-radius: 8px;
+  content: "";
+  pointer-events: none;
+}
+.purchase-flow__aura {
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 18% 42% at 4% 12%, rgba(185, 245, 255, 0.72), transparent 70%),
+    radial-gradient(ellipse 24% 34% at 95% 10%, rgba(110, 220, 255, 0.62), transparent 72%),
+    radial-gradient(ellipse 28% 26% at 86% 96%, rgba(185, 245, 255, 0.68), transparent 72%),
+    radial-gradient(ellipse 22% 38% at 8% 90%, rgba(80, 180, 255, 0.58), transparent 72%);
+  filter: blur(10px);
+  opacity: 0.2;
+  animation: checkout-aura-flicker 4.8s ease-in-out infinite alternate;
+}
+.purchase-flow__aura::before {
+  inset: -16px;
+  background:
+    linear-gradient(90deg, transparent 3%, rgba(185, 245, 255, 0.62) 16%, rgba(110, 220, 255, 0.4) 24%, transparent 37%, transparent 60%, rgba(185, 245, 255, 0.55) 78%, transparent 97%) top / 100% 12px no-repeat,
+    linear-gradient(90deg, transparent 6%, rgba(80, 180, 255, 0.48) 25%, rgba(185, 245, 255, 0.38) 34%, transparent 48%, transparent 67%, rgba(185, 245, 255, 0.58) 88%, transparent 100%) bottom / 100% 13px no-repeat;
+  filter: blur(7px);
+  opacity: 0.16;
+  animation: checkout-aura-drift 5.6s ease-in-out infinite alternate;
+}
+.purchase-flow__aura::after {
+  inset: -21px;
+  background:
+    radial-gradient(ellipse 12% 38% at 1% 47%, rgba(185, 245, 255, 0.7), transparent 75%),
+    radial-gradient(ellipse 13% 36% at 99% 58%, rgba(110, 220, 255, 0.64), transparent 75%);
+  filter: blur(8px);
+  opacity: 0.18;
+  animation: checkout-aura-wisp 3.9s ease-in-out infinite alternate;
+}
+.purchase-flow__flame,
+.purchase-flow__flame::before,
+.purchase-flow__flame::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+.purchase-flow__flame {
+  z-index: 1;
+  inset: -5px;
+  padding: 3px;
+  border-radius: 7px;
+  background: conic-gradient(
+    from 18deg,
+    rgba(220, 250, 255, 0.96),
+    rgba(120, 225, 255, 0.76) 8%,
+    rgba(70, 170, 255, 0.48) 15%,
+    rgba(185, 245, 255, 0.88) 23%,
+    rgba(120, 225, 255, 0.58) 33%,
+    rgba(220, 250, 255, 0.96) 43%,
+    rgba(70, 170, 255, 0.48) 54%,
+    rgba(185, 245, 255, 0.9) 66%,
+    rgba(120, 225, 255, 0.64) 79%,
+    rgba(220, 250, 255, 0.96) 90%,
+    rgba(120, 225, 255, 0.76)
+  );
+  filter: blur(1.5px);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.98;
+  animation: checkout-flame-flicker 4.4s ease-in-out infinite alternate;
+}
+.purchase-flow__flame::before {
+  inset: -7px;
+  border-radius: 11px;
+  background:
+    radial-gradient(ellipse 5% 70% at 8% 0%, rgba(220, 250, 255, 0.82), transparent 66%),
+    radial-gradient(ellipse 6% 80% at 29% 0%, rgba(120, 225, 255, 0.7), transparent 68%),
+    radial-gradient(ellipse 5% 72% at 52% 0%, rgba(185, 245, 255, 0.76), transparent 67%),
+    radial-gradient(ellipse 6% 76% at 75% 0%, rgba(120, 225, 255, 0.7), transparent 68%),
+    radial-gradient(ellipse 5% 70% at 94% 0%, rgba(220, 250, 255, 0.84), transparent 66%),
+    radial-gradient(ellipse 5% 70% at 10% 100%, rgba(185, 245, 255, 0.76), transparent 66%),
+    radial-gradient(ellipse 6% 80% at 34% 100%, rgba(120, 225, 255, 0.7), transparent 68%),
+    radial-gradient(ellipse 5% 72% at 58% 100%, rgba(220, 250, 255, 0.82), transparent 67%),
+    radial-gradient(ellipse 6% 76% at 80% 100%, rgba(120, 225, 255, 0.7), transparent 68%),
+    radial-gradient(ellipse 5% 70% at 96% 100%, rgba(185, 245, 255, 0.8), transparent 66%),
+    radial-gradient(ellipse 72% 7% at 0% 18%, rgba(120, 225, 255, 0.68), transparent 68%),
+    radial-gradient(ellipse 72% 6% at 0% 49%, rgba(220, 250, 255, 0.78), transparent 67%),
+    radial-gradient(ellipse 72% 7% at 0% 78%, rgba(120, 225, 255, 0.7), transparent 68%),
+    radial-gradient(ellipse 72% 7% at 100% 13%, rgba(185, 245, 255, 0.76), transparent 68%),
+    radial-gradient(ellipse 72% 6% at 100% 45%, rgba(120, 225, 255, 0.7), transparent 67%),
+    radial-gradient(ellipse 72% 7% at 100% 76%, rgba(220, 250, 255, 0.8), transparent 68%);
+  filter: blur(2px);
+  opacity: 0.72;
+  animation: checkout-flame-wisps 5.3s ease-in-out infinite alternate;
+}
+.purchase-flow__flame::after {
+  inset: -3px;
+  border-radius: 5px;
+  background:
+    repeating-linear-gradient(90deg, rgba(220, 250, 255, 0.88) 0 8%, rgba(120, 225, 255, 0.58) 8% 14%, rgba(185, 245, 255, 0.82) 14% 20%, rgba(70, 170, 255, 0.46) 20% 24%) top / 28% 3px repeat-x,
+    repeating-linear-gradient(90deg, rgba(185, 245, 255, 0.82) 0 7%, rgba(70, 170, 255, 0.46) 7% 13%, rgba(220, 250, 255, 0.88) 13% 20%, rgba(120, 225, 255, 0.58) 20% 25%) bottom / 31% 3px repeat-x,
+    repeating-linear-gradient(180deg, rgba(220, 250, 255, 0.86) 0 8%, rgba(120, 225, 255, 0.56) 8% 14%, rgba(185, 245, 255, 0.8) 14% 20%, rgba(70, 170, 255, 0.44) 20% 25%) left / 3px 28% repeat-y,
+    repeating-linear-gradient(180deg, rgba(185, 245, 255, 0.8) 0 7%, rgba(70, 170, 255, 0.44) 7% 13%, rgba(220, 250, 255, 0.88) 13% 20%, rgba(120, 225, 255, 0.56) 20% 25%) right / 3px 31% repeat-y;
+  filter: blur(0.65px);
+  opacity: 0.86;
+  animation: checkout-flame-spark 3.7s ease-in-out infinite alternate;
+}
 .purchase-flow__panel {
   position: relative;
+  z-index: 2;
   width: min(100%, 34rem);
   max-height: min(78dvh, 43rem);
   overflow: hidden;
@@ -486,6 +663,47 @@ button { font: inherit; }
 .purchase-flow__message { margin: 1.3rem auto 0; max-width: 25rem; font-size: clamp(0.92rem, 1.45vw, 1.08rem); line-height: 1.45; }
 .purchase-flow__farewell { margin: 0.75rem auto 1.4rem; max-width: 24rem; color: #75432c; font-size: clamp(0.78rem, 1.15vw, 0.92rem); font-style: italic; line-height: 1.4; }
 .purchase-flow__confirm:focus-visible, .purchase-flow__continue:focus-visible { outline: 2px solid #4d1e12; outline-offset: 3px; }
+
+@keyframes checkout-aura-flicker {
+  0% { opacity: 0.14; transform: scale(0.99); }
+  42% { opacity: 0.26; transform: scale(1.01); }
+  100% { opacity: 0.18; transform: scale(1); }
+}
+
+@keyframes checkout-aura-drift {
+  0% { opacity: 0.1; transform: translateX(-2px) translateY(1px); }
+  100% { opacity: 0.2; transform: translateX(2px) translateY(-1px); }
+}
+
+@keyframes checkout-aura-wisp {
+  0% { opacity: 0.12; transform: scaleY(0.95); }
+  100% { opacity: 0.22; transform: scaleY(1.04); }
+}
+
+@keyframes checkout-flame-flicker {
+  0% { opacity: 0.74; filter: blur(1.2px); }
+  48% { opacity: 1; filter: blur(2px); }
+  100% { opacity: 0.84; filter: blur(1.5px); }
+}
+
+@keyframes checkout-flame-wisps {
+  0% { opacity: 0.5; transform: scale(0.98, 0.94); }
+  100% { opacity: 0.82; transform: scale(1.02, 1.06); }
+}
+
+@keyframes checkout-flame-spark {
+  0% { opacity: 0.62; background-position: 0 0, 0 100%, 0 0, 100% 0; }
+  100% { opacity: 0.96; background-position: 8px 0, -7px 100%, 0 6px, 100% -6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .purchase-flow__aura,
+  .purchase-flow__aura::before,
+  .purchase-flow__aura::after,
+  .purchase-flow__flame,
+  .purchase-flow__flame::before,
+  .purchase-flow__flame::after { animation: none; }
+}
 
 .coin-balance {
   position: relative;
@@ -557,7 +775,7 @@ button { font: inherit; }
 }
 
 .product-overlay__shade { position: absolute; inset: 0; background: rgba(12, 5, 3, 0.68); }
-.product-overlay__shade--grimoire { backdrop-filter: blur(2px); }
+.product-overlay__shade--grimoire, .product-overlay__shade--potion { backdrop-filter: blur(2px); }
 .product-overlay__stage {
   position: absolute;
   top: 50%;
@@ -569,6 +787,7 @@ button { font: inherit; }
 .product-overlay__art { position: absolute; inset: 0; background-position: center; background-repeat: no-repeat; background-size: 100% 100%; }
 .product-overlay__art--wand { background-image: url("/scenes/wand-details.webp"); }
 .product-overlay__art--grimoire { background-image: url("/scenes/grimoire-details.webp"); }
+.product-overlay__art--potion { background-image: url("/scenes/potion-details.webp"); }
 .wand-detail__wand {
   position: absolute;
   top: 49%;
@@ -594,12 +813,12 @@ button { font: inherit; }
   line-height: 1.1;
 }
 .wand-detail__value dd { margin: 0; }
-.wand-detail__value--name { top: 16.6%; width: 24.7%; font-size: clamp(0.7rem, 1.4vw, 1.4rem); }
-.wand-detail__value--rarity { top: 30%; width: 16%; }
+.wand-detail__value--name { top: 16.6%; left: 60.7%; width: 24.7%; font-size: clamp(0.7rem, 1.4vw, 1.4rem); }
+.wand-detail__value--rarity { top: 30%; left: 59.2%; width: 16%; }
 .wand-detail__value--materials { top: 42.1%; width: 24.7%; font-size: clamp(0.48rem, 0.92vw, 0.95rem); }
-.wand-detail__value--length { top: 53.6%; width: 18%; }
+.wand-detail__value--length { top: 53.6%; left: 61.5%; width: 18%; }
 .wand-detail__value--affinity { top: 65%; width: 24.7%; font-size: clamp(0.48rem, 0.92vw, 0.95rem); }
-.wand-detail__value--price { top: 76.7%; width: 18%; }
+.wand-detail__value--price { top: 76.7%; left: 60.4%; width: 18%; }
 .wand-detail__acquire {
   position: absolute;
   top: 83.5%;
@@ -627,6 +846,7 @@ button { font: inherit; }
   cursor: pointer;
 }
 .product-overlay__close--grimoire { top: 4.5%; left: 84.2%; width: 3.4%; }
+.product-overlay__close--potion { top: 10.5%; left: 81.6%; width: 3.5%; }
 .wand-detail__acquire:focus-visible, .product-overlay__close:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }
 
 .grimoire-detail__book {
@@ -744,3 +964,49 @@ button { font: inherit; }
 }
 .grimoire-detail__acquire:disabled { cursor: default; color: #d2bd91; }
 .grimoire-detail__acquire:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }
+
+.potion-detail__bottle {
+  position: absolute;
+  aspect-ratio: 2 / 3;
+  margin: 0;
+  translate: -50% -50%;
+  background: center / contain no-repeat;
+  pointer-events: none;
+}
+
+.potion-detail__content { position: absolute; inset: 0; }
+.potion-detail__value {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.2% 0.8%;
+  color: #32180e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  overflow: hidden;
+  text-align: center;
+}
+.potion-detail__value dd { width: 100%; margin: 0; text-align: center; }
+.potion-detail__value--name { left: 53%; top: 25.2%; width: 28.5%; height: 6.1%; font-size: clamp(0.72rem, 1.2vw, 1.28rem); line-height: 1.04; }
+.potion-detail__value--rarity { left: 58.3%; top: 38.1%; width: 23.1%; height: 5.6%; font-size: clamp(0.56rem, 0.92vw, 0.98rem); line-height: 1; }
+.potion-detail__value--ingredients { left: 58.6%; top: 50.1%; width: 22.4%; height: 5.9%; font-size: clamp(0.65rem, 0.81vw, 0.88rem); line-height: 1.04; }
+.potion-detail__value--effect { left: 58.1%; top: 62.9%; width: 23.5%; height: 10.1%; font-size: clamp(0.68rem, 0.86vw, 0.94rem); line-height: 1.08; }
+.potion-detail__value--price { left: 57.3%; top: 78.1%; width: 23.1%; height: 5.1%; font-size: clamp(0.56rem, 0.92vw, 0.98rem); line-height: 1; }
+.potion-detail__acquire {
+  position: absolute;
+  top: 85.2%;
+  left: 52.2%;
+  width: 29.4%;
+  height: 7.5%;
+  border: 0;
+  background: url("/ui/primary-button.webp") center / 100% 100% no-repeat;
+  color: #f4e5bd;
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  text-shadow: 0 2px 3px #250b06;
+}
+.potion-detail__acquire:disabled { color: #d2bd91; cursor: default; }
+.potion-detail__acquire:focus-visible { outline: 2px solid #fff1c9; outline-offset: 2px; }

@@ -56,33 +56,37 @@ export function PurchaseFlow() {
       {isCheckoutOpen && (
         <motion.div className="purchase-flow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration }}>
           <div className="purchase-flow__shade" aria-hidden="true" />
-          <motion.section
-            className="purchase-flow__panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="checkout-title"
-            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
-            transition={{ duration, ease: "easeOut" }}
-            onKeyDown={trapCheckoutFocus}
-          >
-            <p className="purchase-flow__eyebrow">Libro mayor del bazar</p>
-            <h2 id="checkout-title">Resumen de compra</h2>
-            <ul className="purchase-flow__items" aria-label="Productos seleccionados">
-              {cart.map((product) => (
-                <li key={product.id}>
-                  <span>{product.name}</span>
-                  <strong>{product.price} monedas</strong>
-                </li>
-              ))}
-            </ul>
-            <p className="purchase-flow__total">Total: <strong>{cartTotal} monedas</strong></p>
-            <div className="purchase-flow__actions">
-              <button ref={confirmButtonRef} className="purchase-flow__confirm" type="button" onClick={confirmPurchase}>Confirmar compra</button>
-              <button className="purchase-flow__continue" type="button" onClick={() => { closeCheckout(); focusCartControl(); }}>Seguir viendo</button>
-            </div>
-          </motion.section>
+          <div className="purchase-flow__checkout-frame">
+            <div className="purchase-flow__aura" aria-hidden="true" />
+            <div className="purchase-flow__flame" aria-hidden="true" />
+            <motion.section
+              className="purchase-flow__panel"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="checkout-title"
+              initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
+              transition={{ duration, ease: "easeOut" }}
+              onKeyDown={trapCheckoutFocus}
+            >
+              <p className="purchase-flow__eyebrow">Libro mayor del bazar</p>
+              <h2 id="checkout-title">Resumen de compra</h2>
+              <ul className="purchase-flow__items" aria-label="Productos seleccionados">
+                {cart.map((product) => (
+                  <li key={product.id}>
+                    <span>{product.name}</span>
+                    <strong>{product.price} monedas</strong>
+                  </li>
+                ))}
+              </ul>
+              <p className="purchase-flow__total">Total: <strong>{cartTotal} monedas</strong></p>
+              <div className="purchase-flow__actions">
+                <button ref={confirmButtonRef} className="purchase-flow__confirm" type="button" onClick={confirmPurchase}>Confirmar compra</button>
+                <button className="purchase-flow__continue" type="button" onClick={() => { closeCheckout(); focusCartControl(); }}>Seguir viendo</button>
+              </div>
+            </motion.section>
+          </div>
         </motion.div>
       )}
 

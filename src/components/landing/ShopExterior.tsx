@@ -42,8 +42,7 @@ export function ShopExterior() {
   return (
     <main className="shop-exterior" aria-busy={isEntering}>
       <motion.div
-        aria-hidden="true"
-        className="shop-exterior__scene"
+        className="shop-exterior__visual"
         animate={isEntering ? { scale: shouldReduceMotion ? 1 : 1.08 } : { scale: 1 }}
         transition={{ duration: transitionDuration, ease: [0.22, 0.61, 0.36, 1] }}
         onAnimationComplete={() => {
@@ -51,13 +50,34 @@ export function ShopExterior() {
             enterShop();
           }
         }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="shop-exterior__shade"
-        animate={{ opacity: isEntering ? 0.82 : 0.16 }}
-        transition={{ duration: transitionDuration, ease: [0.22, 0.61, 0.36, 1] }}
-      />
+      >
+        <div aria-hidden="true" className="shop-exterior__scene" />
+        <motion.div
+          aria-hidden="true"
+          className="shop-exterior__shade"
+          animate={{ opacity: isEntering ? 0.82 : 0.16 }}
+          transition={{ duration: transitionDuration, ease: [0.22, 0.61, 0.36, 1] }}
+        />
+
+        <p
+          className="shop-exterior__panel-copy shop-exterior__panel-copy--left"
+          style={EXTERIOR_LAYOUT.leftPanelText}
+        >
+          <span>Objetos extraordinarios</span>
+          <span>para viajeros,</span>
+          <span>estudiosos y curiosos</span>
+          <span>de lo imposible.</span>
+        </p>
+        <p
+          className="shop-exterior__panel-copy shop-exterior__panel-copy--right"
+          style={EXTERIOR_LAYOUT.rightPanelText}
+        >
+          <span>Cruza el umbral</span>
+          <span>y descubre</span>
+          <span>las colecciones</span>
+          <span>del bazar.</span>
+        </p>
+      </motion.div>
 
       <h1 className="sr-only">Bazar Diro</h1>
       <button
@@ -69,33 +89,17 @@ export function ShopExterior() {
         aria-label="Entrar al Bazar Diro por la puerta principal"
       />
 
-      <p
-        className="shop-exterior__panel-copy shop-exterior__panel-copy--left"
-        style={EXTERIOR_LAYOUT.leftPanelText}
-      >
-        <span>Objetos extraordinarios</span>
-        <span>para viajeros,</span>
-        <span>estudiosos y curiosos</span>
-        <span>de lo imposible.</span>
-      </p>
-      <p
-        className="shop-exterior__panel-copy shop-exterior__panel-copy--right"
-        style={EXTERIOR_LAYOUT.rightPanelText}
-      >
-        <span>Cruza el umbral</span>
-        <span>y descubre</span>
-        <span>las colecciones</span>
-        <span>del bazar.</span>
-      </p>
-      <button
+      <motion.button
         type="button"
         className="shop-exterior__entry-control"
         style={EXTERIOR_LAYOUT.enterControl}
         onClick={handleEnter}
         disabled={isEntering}
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.25, ease: [0.22, 0.61, 0.36, 1] }}
       >
         {isEntering ? "Abriendo…" : "Entrar"}
-      </button>
+      </motion.button>
     </main>
   );
 }
