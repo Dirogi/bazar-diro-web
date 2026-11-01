@@ -15,7 +15,7 @@ Initial application architecture and product catalog.
 - Strongly typed product domain model created for wands, grimoires, and potions.
 - Local catalog data added for the initial 18 products, with final WebP asset paths.
 - Global shop state is available through a typed React Context provider and hook.
-- Final visual assets are available: the exterior scene, three room scenes, three product-detail backgrounds, the wand glass overlay, and all 18 product images.
+- Final visual assets are available: the exterior scene, three room scenes, three product-detail backgrounds, and all 18 product images.
 - Exterior landing, animated shop entry, and the initial Wands-room shell are implemented using the existing global shop state.
 - A reusable persistent room interface displays the room title, available navigation controls, and cart count using the UI assets.
 - The improved Wands room background removes the central support bars and enlarges and cleans the empty brass nameplates. The six wand positions were manually fine-tuned in-browser and their current placement values are visually approved for this stage; no glass overlay is rendered.
@@ -61,7 +61,6 @@ Initial application architecture and product catalog.
 - `PotionRoom` maps its six typed bottles and multiline-capable dynamic nameplates through `POTION_PLACEMENTS`. `PotionDetail` uses `POTION_DETAIL_PLACEMENTS` independently, keeps bottles front-facing in `potion-details.webp`, and positions typed name, rarity, ingredients, effect, and price inside the illustrated parchment fields. Turnaround remains intentionally unimplemented.
 - Persistent interface sizing and alignment are adjustable through CSS variables: navigation and cart frames are scaled up, navigation arrows use a -6px vertical offset, and room subtitles sit lower within their labels. The approved coin indicator offset is `3.05vw` for scene-trim clearance; the cart position remains independent and unchanged.
 - `canto-de-espejo.webp` uses a 1122x1402 portrait canvas; its image remains centered and sized by width within the wand control, and its placement was visually reviewed with the other wands.
-- The provisional wand glass was intentionally removed after visual review because it did not align precisely with the display frame and reduced consistency with the other rooms. The asset remains in `public/overlays/`.
 
 ## Known issues
 
@@ -71,4 +70,3 @@ Initial application architecture and product catalog.
 
 - The project is frontend-only and uses fictional commerce interactions.
 - UI decorative assets are image-based. Render dynamic room titles, arrows, cart counts, button labels, and product text separately with HTML/CSS; do not bake dynamic text into the images.
-- Empty feature and asset directories are retained with `.gitkeep` files until content is added.
