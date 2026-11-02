@@ -1,18 +1,20 @@
+[Español](README.md) | [English](README.en.md)
+
 # Bazar Diro
 
-Bazar Diro is an original, desktop-first interactive fantasy shop built as a frontend practice and portfolio project. Rather than a conventional ecommerce site, it is a game-like web experience: enter through an animated exterior, travel between magical rooms, and explore a curated collection of fictional objects.
+Bazar Diro es una tienda de fantasía interactiva, original y diseñada principalmente para escritorio, creada como proyecto de práctica de frontend y de portfolio. En lugar de un sitio web de comercio electrónico convencional, es una experiencia web con un enfoque de videojuego: entra a través de un exterior animado, viaja entre salas mágicas y explora una colección seleccionada de objetos ficticios.
 
-## Features
+## Características
 
-- Three themed rooms: Wands, Grimoires, and Potions
-- 18 original fantasy products with typed catalog data
-- Animated shop entry, room exploration, and product-detail views
-- Parchment-style cart with a fictional 2,000-coin balance
-- Simulated checkout flow with no real transactions
-- Custom fantasy interface inspired by antique labels, brass plaques, and parchment
-- Reduced-motion support and keyboard-accessible close controls where relevant
+- Tres salas temáticas: Varitas, Grimorios y Pociones
+- 18 productos de fantasía originales con datos de catálogo tipados
+- Entrada a la tienda, exploración de salas y vistas de detalle de producto animadas
+- Carrito con estilo de pergamino y un saldo ficticio de 2.000 monedas
+- Flujo de compra simulado sin transacciones reales
+- Interfaz de fantasía personalizada inspirada en etiquetas antiguas, placas de latón y pergamino
+- Compatibilidad con movimiento reducido y controles de cierre accesibles mediante teclado cuando procede
 
-## Tech Stack
+## Tecnologías
 
 - Next.js
 - React
@@ -20,9 +22,9 @@ Bazar Diro is an original, desktop-first interactive fantasy shop built as a fro
 - Tailwind CSS
 - Motion
 
-## Architecture
+## Arquitectura
 
-The experience uses local, typed product data and a small global shop-state layer to coordinate room navigation, product overlays, cart contents, fictional currency, and checkout. Reusable room and detail components are paired with independent placement configurations so each scene can be composed precisely without duplicating interaction logic.
+La experiencia utiliza datos de productos locales y tipados, junto con una pequeña capa de estado global de la tienda para coordinar la navegación entre salas, las superposiciones de productos, el contenido del carrito, la moneda ficticia y la compra. Los componentes reutilizables de salas y detalles se combinan con configuraciones de colocación independientes, de modo que cada escena puede componerse con precisión sin duplicar la lógica de interacción.
 
 ```text
 src/
@@ -37,7 +39,7 @@ public/
   ui/
 ```
 
-## Getting Started
+## Primeros pasos
 
 ```bash
 git clone <repository-url>
@@ -46,9 +48,9 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-Available scripts:
+Scripts disponibles:
 
 ```bash
 npm run dev
@@ -57,22 +59,22 @@ npm run start
 npm run lint
 ```
 
-## Screenshots
+## Capturas de pantalla
 
-Screenshots will be added after the final deployment.
+Las capturas de pantalla se añadirán después del despliegue final.
 
-## Deployment
+## Despliegue
 
-The project is prepared for deployment on Vercel.
+El proyecto está preparado para desplegarse en Vercel.
 
-Live demo: coming soon
+Demostración en directo: próximamente
 
-## Future Improvements
+## Mejoras futuras
 
-- Interactive 360° product inspection
-- Improved mobile responsiveness
-- Optional ambient audio
+- Inspección interactiva de productos en 360°
+- Mejoras en la adaptación a dispositivos móviles
+- Audio ambiental opcional
 
-## Disclaimer
+## Aviso
 
-Bazar Diro is a personal practice and portfolio project. All products, currency, and purchase interactions are fictional; it is not a real commercial store.
+Bazar Diro es un proyecto personal de práctica y portfolio. Todos los productos, la moneda y las interacciones de compra son ficticios; no es una tienda comercial real.
