@@ -39,35 +39,13 @@ public/
   ui/
 ```
 
-## Getting Started
+## Live Demo
 
-```bash
-git clone <repository-url>
-cd bazar-diro-web
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-Available scripts:
-
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
-```
+Live demo: coming soon
 
 ## Screenshots
 
 Screenshots will be added after the final deployment.
-
-## Deployment
-
-The project is prepared for deployment on Vercel.
-
-Live demo: coming soon
 
 ## Future Improvements
 

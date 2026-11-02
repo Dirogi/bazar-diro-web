@@ -39,35 +39,13 @@ public/
   ui/
 ```
 
-## Primeros pasos
+## Demo
 
-```bash
-git clone <repository-url>
-cd bazar-diro-web
-npm install
-npm run dev
-```
-
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
-
-Scripts disponibles:
-
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
-```
+Demo en vivo: próximamente
 
 ## Capturas de pantalla
 
 Las capturas de pantalla se añadirán después del despliegue final.
-
-## Despliegue
-
-El proyecto está preparado para desplegarse en Vercel.
-
-Demostración en directo: próximamente
 
 ## Mejoras futuras
 
