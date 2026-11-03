@@ -45,7 +45,47 @@ Live demo: coming soon
 
 ## Screenshots
 
-Screenshots will be added after the final deployment.
+### Entrance
+
+![Bazar Diro Entrance](public/screenshots/Entrada.webp)
+
+The experience begins outside Bazar Diro, with an animated entrance that introduces the user to the shop and establishes its visual identity from the first interaction.
+
+### Wands Room
+
+![Wands Room](public/screenshots/Sala_varitas.webp)
+
+The bazaar’s first room displays six original wands in an interactive showcase, with room navigation, a coin counter and access to the shopping cart.
+
+### Grimoires Room
+
+![Grimoires Room](public/screenshots/Sala_grimorios.webp)
+
+The second room presents a collection of grimoires with their own designs, names and attributes while preserving a consistent visual system across the shop.
+
+### Potions Room
+
+![Potions Room](public/screenshots/Sala_pociones.webp)
+
+The apothecary features six original potions in a purpose-built display, completing the bazaar’s three main product categories.
+
+### Product Detail
+
+![Grimoire Detail](public/screenshots/Detalles_grimorio.webp)
+
+Every object has its own detail view with dynamic information about rarity, materials, magical properties and price, integrated into a category-specific scene.
+
+### Cart
+
+![Bazar Diro Cart](public/screenshots/Carrito.webp)
+
+Selected products are gathered in a parchment-style cart. The system tracks the available balance, prevents duplicates and leads into a simulated checkout flow.
+
+### Purchase Summary
+
+![Purchase Summary](public/screenshots/ResumenCompra.webp)
+
+Before completing the experience, the user can review the selected items and total cost in a checkout summary designed to match the bazaar’s visual language.
 
 ## Future Improvements
 

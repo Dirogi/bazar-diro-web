@@ -45,7 +45,47 @@ Demo en vivo: próximamente
 
 ## Capturas de pantalla
 
-Las capturas de pantalla se añadirán después del despliegue final.
+### Entrada
+
+![Entrada de Bazar Diro](public/screenshots/Entrada.webp)
+
+La experiencia comienza en el exterior de Bazar Diro, con una entrada animada que introduce al usuario en la tienda y establece desde el primer momento su identidad visual.
+
+### Sala de Varitas
+
+![Sala de Varitas](public/screenshots/Sala_varitas.webp)
+
+Primer salón del bazar: seis varitas originales presentadas en una vitrina interactiva, con navegación entre salas, contador de monedas y acceso al carrito.
+
+### Sala de Grimorios
+
+![Sala de Grimorios](public/screenshots/Sala_grimorios.webp)
+
+El segundo salón presenta una colección de grimorios con diseños, nombres y atributos propios, manteniendo un sistema visual coherente con el resto de la tienda.
+
+### Sala de Pociones
+
+![Sala de Pociones](public/screenshots/Sala_pociones.webp)
+
+La botica reúne seis pociones originales en un expositor diseñado específicamente para la experiencia, completando las tres categorías principales del bazar.
+
+### Detalle de producto
+
+![Detalle de Grimorio](public/screenshots/Detalles_grimorio.webp)
+
+Cada objeto dispone de una ficha propia con información dinámica sobre rareza, materiales, propiedades y precio, integrada en una escena específica para cada categoría.
+
+### Carrito
+
+![Carrito de Bazar Diro](public/screenshots/Carrito.webp)
+
+Los productos seleccionados se reúnen en un carrito con estética de pergamino. El sistema controla el saldo disponible, evita duplicados y permite continuar hacia una compra simulada.
+
+### Resumen de compra
+
+![Resumen de compra](public/screenshots/ResumenCompra.webp)
+
+Antes de finalizar, el usuario puede revisar su selección y el coste total en un resumen de compra integrado en la estética del bazar.
 
 ## Mejoras futuras
 
