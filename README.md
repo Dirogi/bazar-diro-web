@@ -77,13 +77,17 @@ Cada objeto dispone de una ficha propia con información dinámica sobre rareza,
 
 ### Carrito
 
-![Carrito de Bazar Diro](public/screenshots/Carrito.webp)
+<p align="center">
+  <img src="public/screenshots/Carrito.webp" alt="Carrito de Bazar Diro" width="55%">
+</p>
 
 Los productos seleccionados se reúnen en un carrito con estética de pergamino. El sistema controla el saldo disponible, evita duplicados y permite continuar hacia una compra simulada.
 
 ### Resumen de compra
 
-![Resumen de compra](public/screenshots/ResumenCompra.webp)
+<p align="center">
+  <img src="public/screenshots/ResumenCompra.webp" alt="Resumen de compra" width="55%">
+</p>
 
 Antes de finalizar, el usuario puede revisar su selección y el coste total en un resumen de compra integrado en la estética del bazar.
 

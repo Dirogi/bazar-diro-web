@@ -77,13 +77,17 @@ Every object has its own detail view with dynamic information about rarity, mate
 
 ### Cart
 
-![Bazar Diro Cart](public/screenshots/Carrito.webp)
+<p align="center">
+  <img src="public/screenshots/Carrito.webp" alt="Bazar Diro Cart" width="55%">
+</p>
 
 Selected products are gathered in a parchment-style cart. The system tracks the available balance, prevents duplicates and leads into a simulated checkout flow.
 
 ### Purchase Summary
 
-![Purchase Summary](public/screenshots/ResumenCompra.webp)
+<p align="center">
+  <img src="public/screenshots/ResumenCompra.webp" alt="Purchase Summary" width="55%">
+</p>
 
 Before completing the experience, the user can review the selected items and total cost in a checkout summary designed to match the bazaar’s visual language.
 
