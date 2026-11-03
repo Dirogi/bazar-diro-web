@@ -14,6 +14,10 @@ Bazar Diro is an original, desktop-first interactive fantasy shop built as a fro
 - Custom fantasy interface inspired by antique labels, brass plaques, and parchment
 - Reduced-motion support and keyboard-accessible close controls where relevant
 
+## Live Demo
+
+[Open Bazar Diro](https://bazar-diro-web.vercel.app)
+
 ## Tech Stack
 
 - Next.js
@@ -38,10 +42,6 @@ public/
   products/
   ui/
 ```
-
-## Live Demo
-
-[Open Bazar Diro](https://bazar-diro-web.vercel.app)
 
 ## Screenshots
 

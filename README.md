@@ -14,6 +14,11 @@ Bazar Diro es una tienda de fantasía interactiva, original y diseñada principa
 - Interfaz de fantasía personalizada inspirada en etiquetas antiguas, placas de latón y pergamino
 - Compatibilidad con movimiento reducido y controles de cierre accesibles mediante teclado cuando procede
 
+## Demo
+
+[Ver Bazar Diro en vivo](https://bazar-diro-web.vercel.app)
+
+
 ## Tecnologías
 
 - Next.js
@@ -38,10 +43,6 @@ public/
   products/
   ui/
 ```
-
-## Demo
-
-[Ver Bazar Diro en vivo](https://bazar-diro-web.vercel.app)
 
 ## Capturas de pantalla
 
