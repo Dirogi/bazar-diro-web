@@ -41,7 +41,7 @@ public/
 
 ## Demo
 
-Demo en vivo: próximamente
+[Ver Bazar Diro en vivo](https://bazar-diro-web.vercel.app)
 
 ## Capturas de pantalla
 

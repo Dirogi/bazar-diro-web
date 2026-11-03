@@ -41,7 +41,7 @@ public/
 
 ## Live Demo
 
-Live demo: coming soon
+[Open Bazar Diro](https://bazar-diro-web.vercel.app)
 
 ## Screenshots
 
